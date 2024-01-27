@@ -46,9 +46,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Bottle Game\BottleManager.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\Graphics" />
+     <Folder Include="Assets\Prefabs\Bottle game" />
+     <Folder Include="Assets\Scripts\Bottle Game" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Scenes" />
      <Folder Include="Assets\Audio" />
