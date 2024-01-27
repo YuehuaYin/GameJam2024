@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int level { get; set; }
+    public static int level { get; private set; }
+
+    public static int money { get; set;}
 
     // Start is called before the first frame update
     void Start()
