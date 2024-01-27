@@ -5108,6 +5108,7 @@ GameObject:
   - component: {fileID: 7750814899462546440}
   - component: {fileID: 7490222266563962190}
   - component: {fileID: 272601213659501587}
+  - component: {fileID: 6659574947819759280}
   m_Layer: 9
   m_Name: BottleYellow
   m_TagString: Untagged
@@ -5264,6 +5265,18 @@ MonoBehaviour:
   returnPosition: {x: 0.384, y: -0.17, z: 0}
   speed: 30
   gravity: 0.5
+--- !u!114 &6659574947819759280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975652846107206637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cddf5d8c6d41a48fa805874f09e594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9160919886812956578
 GameObject:
   m_ObjectHideFlags: 0

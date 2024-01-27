@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 6228638887577468928}
   - component: {fileID: 8898530177242010056}
   m_Layer: 8
-  m_Name: 1
+  m_Name: 2
   m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

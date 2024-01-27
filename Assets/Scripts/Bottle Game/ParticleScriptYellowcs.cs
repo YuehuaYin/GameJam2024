@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleScript : MonoBehaviour
+public class ParticleScriptYellow : MonoBehaviour
 {
     private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Glass"))
+        if (other.name.Equals("3"))
         {
             other.GetComponent<Customer>().fill();
         }

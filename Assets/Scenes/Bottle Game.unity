@@ -688,10 +688,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 212873381}
     m_Modifications:
-    - target: {fileID: 6119644220478164582, guid: 64edbc288c0418046810b6f2ad6e3dd9, type: 3}
-      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8704328723411621144, guid: 64edbc288c0418046810b6f2ad6e3dd9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
