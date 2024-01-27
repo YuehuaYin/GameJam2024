@@ -17,8 +17,10 @@ public class Accept : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D c){
-        if(c.gameObject.GetComponent<ID>() != null){
+        ID id;
+        if((id = c.gameObject.GetComponent<ID>()) != null){
             Debug.Log("ID Accepted");
+            id.Accept();
         }
     }
 }
