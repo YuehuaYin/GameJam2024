@@ -1,61 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ID : MonoBehaviour
 {
-    private Vector2 difference = Vector2.zero;
+    [SerializeField] private string name;
+    [SerializeField] private string age;
+    [SerializeField] private string nationality;
 
-    [SerializeField]
-    private GameObject go;
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text ageText;
+    [SerializeField] private TMP_Text nationalityText;
 
-    private Transform tf;
-    private Rigidbody2D rb;
+    // Start is called before the first frame update
+    void Start()
+    {
 
-    private bool followingMouse = false;
-    [SerializeField]
-    private float speed;
-    
-    public void Awake() {
-        rb = go.GetComponent<Rigidbody2D>();
-        tf = go.GetComponent<Transform>();
     }
 
-    //first frame
-    public void Start()
+    // Update is called once per frame
+    void Update()
     {
         
-    }
-
-    private void Update()
-    {
-
-    }
-
-    private void FixedUpdate() {
-        if (followingMouse) {
-            difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) tf.position;
-            rb.AddForce(difference * speed);
-        }
-    }
-
-    private void OnMouseDown()
-    {
-        followingMouse = true;
-        //difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) tf.position;
-        //rb.velocity = new Vector2(0, 0);
-    }
-
-    private void OnMouseDrag()
-    {
-        //difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) tf.position;
-        //tf.position = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - difference;
-        
-    }
-
-    private void OnMouseUp()
-    {
-        followingMouse = false;
-        difference = new Vector2(0,0);
     }
 }
