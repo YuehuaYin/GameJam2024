@@ -7,6 +7,9 @@ public class ParticleScript : MonoBehaviour
 {
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log(other.name);
+        if (other.CompareTag("Glass"))
+        {
+            other.GetComponent<Customer>().fill();
+        }
     }
 }

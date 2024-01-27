@@ -49,17 +49,6 @@ public class BottleManager : MonoBehaviour
             difference = new Vector2(0,0);
             rigidBody.angularVelocity = 0;
         }
-
-        if (transform.localPosition.y < -0.390 && !holdMeDaddy)
-        {
-            transform.localPosition = returnPosition;
-            transform.rotation = Quaternion.identity;
-            rigidBody.velocity = new Vector2(0, 0);
-            rigidBody.gravityScale = 0;
-            holdMeDaddy = false;
-            difference = new Vector2(0,0);
-            rigidBody.angularVelocity = 0;
-        }
     }
 
     private void FixedUpdate()

@@ -61,14 +61,15 @@ public class Customer : MonoBehaviour
         mesh.vertices = vertices;
         
         meshFilter.mesh = mesh;
-        
-        Debug.Log(x + "," + y);
     }
 
     public void fill()
     {
-        currectLiquid++;
-        addLiquid();
+        if (currectLiquid < targetLiquid)
+        {
+            currectLiquid++;
+            addLiquid();
+        }
     }
     private void OnParticleCollision(GameObject other)
     {
