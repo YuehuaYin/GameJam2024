@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Bucket
-  - drain
+  tags: [Bucket, drain, Glass]
   layers:
   - Default
   - TransparentFX
@@ -15,7 +13,7 @@ TagManager:
   - UI
   - 
   - walls
-  - 
+  - Glass
   - 
   - 
   - 
