@@ -10289,10 +10289,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bucket: {fileID: 762250900}
+  sponge: {fileID: 1606243161}
   cleanEmpty: {fileID: 21300000, guid: 7faaf1ce465880d44a6c11470e9b02e1, type: 3}
   cleanFull: {fileID: 21300000, guid: 05b0f38fc551ec64ba3adb93171fb2f2, type: 3}
   dirtyEmpty: {fileID: 21300000, guid: 986a90aef76fa824bbd0052f9a70417c, type: 3}
   dirtyFull: {fileID: 21300000, guid: cd1b82699a112e34eada2bd9fa53a2eb, type: 3}
+  bucketState: 0
+  timer: 0
+  timeBetweenRounds: 40
 --- !u!1 &1606243161
 GameObject:
   m_ObjectHideFlags: 0
@@ -10439,6 +10443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bucketDirt: 10
   manager: {fileID: 1501783765}
+  baseBucketDirt: 10
 --- !u!50 &1606243167
 Rigidbody2D:
   serializedVersion: 4

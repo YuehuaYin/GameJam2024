@@ -32,7 +32,15 @@ public class Bucket : MonoBehaviour
         pissEmission = piss.emission;
         shitEmission = shit.emission;
     }
+    public void resetBucket()
+    {
+        piss.enableEmission = false;
+        shit.enableEmission = false;
+        full = true;
+        timeSpentEmptying = 0;
+        emptying = false;
 
+    }
     private void Update()
     {
         gameTime += Time.deltaTime;
