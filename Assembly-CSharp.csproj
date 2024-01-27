@@ -51,6 +51,7 @@
      <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\Graphics" />
      <Folder Include="Assets\Prefabs\Bottle game" />
+     <Folder Include="Assets\Materials" />
      <Folder Include="Assets\Scripts\Bottle Game" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Scenes" />

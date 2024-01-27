@@ -8,7 +8,9 @@ public class BottleManager : MonoBehaviour
 {
     private Vector2 difference = Vector2.zero;
 
+    [SerializeField] private Transform transform;
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private ParticleSystem particleSystem;
     
     //first fame
     public void Start()
@@ -18,12 +20,21 @@ public class BottleManager : MonoBehaviour
 
     private void Update()
     {
-        throw new NotImplementedException();
+        var emission = particleSystem.emission;
+        if (transform.rotation.eulerAngles.z > 125 && transform.rotation.eulerAngles.z < 235)
+        {
+            emission.enabled = true;
+        }
+        else
+        {
+            emission.enabled = false;
+        }
     }
 
     private void OnMouseDown()
     {
         difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) transform.position;
+        rigidBody.velocity = new Vector2(0, 0);
     }
 
     private void OnMouseDrag()
@@ -34,7 +45,5 @@ public class BottleManager : MonoBehaviour
 
     private void OnMouseUp()
     {
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
-        throw new NotImplementedException();
     }
 }
