@@ -197,7 +197,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -948,7 +948,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.4584434
+      value: 0.0001
       mode: 0
       spread: 0
       speed:
@@ -4965,9 +4965,10 @@ GameObject:
   - component: {fileID: 762250902}
   - component: {fileID: 762250904}
   - component: {fileID: 762250903}
+  - component: {fileID: 762250905}
   m_Layer: 0
   m_Name: bucket
-  m_TagString: Untagged
+  m_TagString: Bucket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4980,7 +4981,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762250900}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.23544613, y: -0.23047304, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5101,7 +5102,39 @@ MonoBehaviour:
   piss: {fileID: 1162925444}
   shit: {fileID: 272463777}
   timeToEmpty: 3
+  timeSpentEmptying: 0
+  full: 1
   timelimit: 120
+  gameTime: 0
+  drainTransform: {fileID: 858128153}
+  manager: {fileID: 1501783765}
+--- !u!50 &762250905
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762250900}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &858128151
 GameObject:
   m_ObjectHideFlags: 0
@@ -5115,7 +5148,7 @@ GameObject:
   - component: {fileID: 858128154}
   m_Layer: 0
   m_Name: TempDrain
-  m_TagString: Untagged
+  m_TagString: drain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5398,7 +5431,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -6149,7 +6182,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.4584434
+      value: 0.0001
       mode: 0
       spread: 0
       speed:
@@ -10164,6 +10197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501783767}
   - component: {fileID: 1501783766}
+  - component: {fileID: 1501783768}
   m_Layer: 0
   m_Name: Toilet Game
   m_TagString: Untagged
@@ -10242,6 +10276,23 @@ Transform:
   - {fileID: 858128153}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1501783768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501783765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7424a000788574b9ab23e42ed9105c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bucket: {fileID: 762250900}
+  cleanEmpty: {fileID: 21300000, guid: 7faaf1ce465880d44a6c11470e9b02e1, type: 3}
+  cleanFull: {fileID: 21300000, guid: 05b0f38fc551ec64ba3adb93171fb2f2, type: 3}
+  dirtyEmpty: {fileID: 21300000, guid: 986a90aef76fa824bbd0052f9a70417c, type: 3}
+  dirtyFull: {fileID: 21300000, guid: cd1b82699a112e34eada2bd9fa53a2eb, type: 3}
 --- !u!1 &1606243161
 GameObject:
   m_ObjectHideFlags: 0
@@ -10254,6 +10305,7 @@ GameObject:
   - component: {fileID: 1606243163}
   - component: {fileID: 1606243164}
   - component: {fileID: 1606243166}
+  - component: {fileID: 1606243167}
   m_Layer: 0
   m_Name: Sponge
   m_TagString: Untagged
@@ -10270,8 +10322,8 @@ Transform:
   m_GameObject: {fileID: 1606243161}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1807152, y: -0.25646335, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.19999999, z: 1}
+  m_LocalPosition: {x: 0.1351, y: -0.3035, z: 0}
+  m_LocalScale: {x: 0.14116, y: 0.12533998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1501783767}
@@ -10385,6 +10437,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c903dc2e64d04cd4facbc9833755149b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bucketDirt: 10
+  manager: {fileID: 1501783765}
+--- !u!50 &1606243167
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606243161}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1808113848
 GameObject:
   m_ObjectHideFlags: 0

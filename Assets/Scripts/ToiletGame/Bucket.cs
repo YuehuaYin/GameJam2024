@@ -11,10 +11,17 @@ public class Bucket : MonoBehaviour
     private Vector2 originalPos;
     private bool emptying;
     [SerializeField] private float timeToEmpty;
-    private float timeSpentEmptying;
-    private bool full;
+    [SerializeField] private float timeSpentEmptying;
+    [SerializeField] private bool full = true;
     [SerializeField] private float timelimit;
-    private float gameTime;
+    [SerializeField] private float gameTime;
+
+    [SerializeField] private Transform drainTransform;
+
+    [SerializeField] private GameObject manager;
+
+    private ParticleSystem.EmissionModule pissEmission;
+    private ParticleSystem.EmissionModule shitEmission;
     //first fame
     public void Start()
     {
@@ -22,6 +29,8 @@ public class Bucket : MonoBehaviour
         piss.enableEmission = false;
         shit.enableEmission = false;
         gameTime = 0;
+        pissEmission = piss.emission;
+        shitEmission = shit.emission;
     }
 
     private void Update()
@@ -42,26 +51,41 @@ public class Bucket : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("helo");
         if (collision.gameObject.tag == "drain")
-        {
+        {  
             EnterDrain();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("helo");
         if (collision.gameObject.tag == "drain")
         {
-            EnterDrain();
+            stopEmptying();
         }
     }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("helo");
+    //    if (collision.gameObject.tag == "drain")
+    //    {
+    //        EnterDrain();
+    //    }
+    //}
     private void finishEmptying()
     {
-        piss.enableEmission = false;
-        shit.enableEmission = false;
+        pissEmission.enabled = false;
+        shitEmission.enabled = false;
         emptying = false;
         full = false;
+        GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
+        manager.GetComponent<ToiletController>().emptyBucket();
+    }
+    private void stopEmptying()
+    {
+        pissEmission.enabled = false;
+        shitEmission.enabled = false;
+        emptying = false;
+        GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
     }
     private void OnMouseDown()
     {
@@ -82,9 +106,10 @@ public class Bucket : MonoBehaviour
     {
         if (full)
         {
-            piss.enableEmission = true;
-            shit.enableEmission = true;
+            pissEmission.enabled = true;
+            shitEmission.enabled = true;
             emptying = true;
+            GetComponent<Transform>().rotation = new Quaternion(0, 0, 1, 0);
         }
     }
 }
