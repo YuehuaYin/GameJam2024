@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 9171318853406304300}
   - component: {fileID: 6119644220478164582}
   - component: {fileID: 632966706783284884}
+  - component: {fileID: 3337400250876777741}
   m_Layer: 0
   m_Name: Particle
   m_TagString: Untagged
@@ -4043,19 +4044,19 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 384
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
     enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 2
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
@@ -5082,6 +5083,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3337400250876777741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507501699395500702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036f268e67057ae4abeeed88548921e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 6119644220478164582}
 --- !u!1 &8975652846107206637
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,7 +5110,7 @@ GameObject:
   - component: {fileID: 7490222266563962190}
   - component: {fileID: 272601213659501587}
   m_Layer: 0
-  m_Name: Bottle
+  m_Name: BottleGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5248,7 +5262,9 @@ MonoBehaviour:
   transform: {fileID: 8704328723411621144}
   rigidBody: {fileID: 3905449448654471392}
   particleSystem: {fileID: 6119644220478164582}
+  returnPosition: {x: 0.112, y: -0.17, z: 0}
   speed: 30
+  gravity: 0.5
 --- !u!1 &9160919886812956578
 GameObject:
   m_ObjectHideFlags: 0

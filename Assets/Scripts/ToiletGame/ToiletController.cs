@@ -12,16 +12,31 @@ public class ToiletController : MonoBehaviour
     [SerializeField] Sprite dirtyEmpty;
     [SerializeField] Sprite dirtyFull;
 
+    [SerializeField] Sprite bg1;
+    [SerializeField] Sprite bg2;
+    [SerializeField] Sprite bg3;
+    [SerializeField] Sprite bg4;
+    [SerializeField] Sprite bg5;
+    [SerializeField] Sprite bg6;
+    Sprite bgSprite;
+
     [SerializeField] private int bucketState;
     // 0 - empty + clean, 1 - empty + dirty , 2 - clean + full, 3 - dirty + full
     [SerializeField] private float timer;
     [SerializeField] private float timeBetweenRounds;
-    
+
+    [SerializeField] private GameObject background;
+
+    private int baseBucketDirt;
+    private float baseTimeSpentEmptying;
+
     // Start is called before the first frame update
     void Start()
     {
         changeSprite(dirtyFull);
         bucketState = 3;
+        setLevelStats();
+        setuplevel();
     }
 
     // Update is called once per frame
@@ -79,5 +94,59 @@ public class ToiletController : MonoBehaviour
     private void changeSprite(Sprite sprite)
     {
         bucket.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+    private void setLevelStats()
+    {
+        switch (GameManager.level)
+        {
+            case 1:
+                bgSprite = bg1;
+                timeBetweenRounds = 45;
+                baseBucketDirt = 3;
+                baseTimeSpentEmptying = 2;
+                break;
+            case 2:
+                bgSprite = bg2;
+                timeBetweenRounds = 40;
+                baseBucketDirt = 4;
+                baseTimeSpentEmptying = 3;
+                break;
+            case 3:
+                bgSprite = bg3;
+                timeBetweenRounds = 40;
+                baseBucketDirt = 4;
+                baseTimeSpentEmptying = 4;
+                break;
+            case 4:
+                bgSprite = bg4;
+                timeBetweenRounds = 38;
+                baseBucketDirt = 5;
+                baseTimeSpentEmptying = 4.5f;
+                break;
+            case 5:
+                bgSprite = bg5;
+                timeBetweenRounds = 35;
+                baseBucketDirt = 6;
+                baseTimeSpentEmptying = 4.5f;
+                break;
+            case 6:
+                bgSprite = bg5;
+                timeBetweenRounds = 35;
+                baseBucketDirt = 7;
+                baseTimeSpentEmptying = 5;
+                break;
+            default:
+                bgSprite = bg1;
+                timeBetweenRounds = 45;
+                baseBucketDirt = 3;
+                baseTimeSpentEmptying = 2;
+                break;
+        }
+    }
+    private void setuplevel()
+    {
+        background.GetComponent<SpriteRenderer>().sprite = bgSprite;
+        bucket.GetComponent<Bucket>().timeToEmpty = baseTimeSpentEmptying;
+        sponge.GetComponent<Sponge>().baseBucketDirt = baseBucketDirt;
     }
 }

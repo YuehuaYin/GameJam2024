@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class EntryCorridor : MonoBehaviour
 {
-    public static int level { get; private set; } = 3;
-
-    public static int money { get; set;}
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +13,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    void OnTriggerStay2D(Collider2D c){
+        Debug.Log("Adding force");
+        c.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 0));
     }
 }

@@ -36,10 +36,11 @@ public class DragDrop : MonoBehaviour
 
     private void FixedUpdate() {
         if (followingMouse) {
-            difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) tf.position;
+            difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) transform.position;
             rb.AddForce(difference * speed);
             rb.drag = mouseDownDrag;
             transform.rotation = Quaternion.identity;
+            rb.angularVelocity = 0;
         } else {
             rb.drag = mouseUpDrag;
         }
