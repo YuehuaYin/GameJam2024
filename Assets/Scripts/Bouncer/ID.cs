@@ -6,9 +6,9 @@ using TMPro;
 
 public class ID : MonoBehaviour
 {
-    [SerializeField] public string name;
-    [SerializeField] public string age;
-    [SerializeField] public string nationality;
+    public string name;
+    public string age;
+    public string nationality;
 
     [SerializeField] public bool acceptable;
 
@@ -41,6 +41,8 @@ public class ID : MonoBehaviour
         } else {
             Debug.Log("Incorrect!");
         }
+        // Play SFX
+        Destroy(gameObject);
     }
 
     // Called when dragged into Deny box
@@ -50,5 +52,7 @@ public class ID : MonoBehaviour
         } else {
             Debug.Log("Correct!");
         }
+        // Play SFX
+        Destroy(gameObject);
     }
 }
