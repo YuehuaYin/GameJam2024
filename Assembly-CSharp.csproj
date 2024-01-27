@@ -47,14 +47,22 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Bottle Game\BottleManager.cs" />
+     <Compile Include="Assets\ComedyMinigameStuff\scripts\ComedyMinigame.cs" />
+     <Folder Include="Assets" />
+     <Folder Include="Assets\ComedyMinigameStuff\sounds" />
+     <Folder Include="Assets\ComedyMinigameStuff" />
      <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\Graphics" />
      <Folder Include="Assets\Prefabs\Bottle game" />
+     <Folder Include="Assets\ComedyMinigameStuff\prefabs" />
      <Folder Include="Assets\Materials" />
      <Folder Include="Assets\Scripts\Bottle Game" />
+     <Folder Include="Assets\ComedyMinigameStuff\scripts" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Scenes" />
+     <Folder Include="Assets\ComedyMinigameStuff\sprites" />
      <Folder Include="Assets\Audio" />
+     <Folder Include="Assets\ComedyMinigameStuff\sprites\emojis" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.11f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -810,8 +818,6 @@
      </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Materials.meta" />
-    <Content Include="Assets\Materials\BottleFluid.mat.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
