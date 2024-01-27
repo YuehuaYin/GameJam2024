@@ -8,14 +8,13 @@ public class Sponge : MonoBehaviour
     private Vector2 difference = Vector2.zero;
     private Vector2 originalPos;
     [SerializeField] int bucketDirt = 10;
-    private Rigidbody2D rb;
     private bool cleaning = false;
     //first fame
     [SerializeField] GameObject manager;
+    [SerializeField] int baseBucketDirt = 10;
     public void Start()
     {
         originalPos = GetComponent<Transform>().position;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -64,5 +63,9 @@ public class Sponge : MonoBehaviour
         {
             cleaning = true;
         }
+    }
+    public void resetCleaning()
+    {
+        bucketDirt = baseBucketDirt;
     }
 }
