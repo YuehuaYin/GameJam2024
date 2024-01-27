@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = System.Random;
 
 public class BottleManager : MonoBehaviour
 {
     private Vector2 difference = Vector2.zero;
+    private bool holdMeDaddy = false;
+    private Random random = new Random();
 
     [SerializeField] private Transform transform;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private ParticleSystem particleSystem;
-    
+
+    public float speed = 20f;
+
     //first fame
     public void Start()
     {
@@ -21,7 +26,7 @@ public class BottleManager : MonoBehaviour
     private void Update()
     {
         var emission = particleSystem.emission;
-        if (transform.rotation.eulerAngles.z > 125 && transform.rotation.eulerAngles.z < 235)
+        if (transform.rotation.eulerAngles.z > 125 && transform.rotation.eulerAngles.z < 235 && holdMeDaddy)
         {
             emission.enabled = true;
         }
@@ -29,21 +34,67 @@ public class BottleManager : MonoBehaviour
         {
             emission.enabled = false;
         }
+        
+        
+        if (transform.localPosition.x > 0.5 || transform.localPosition.x < -0.5 || transform.localPosition.y < -0.5)
+        {
+            transform.localPosition = new Vector3(0.25f, -0.17f);
+            transform.rotation = Quaternion.identity;
+            rigidBody.velocity = new Vector2(0, 0);
+            rigidBody.gravityScale = 0;
+            holdMeDaddy = false;
+            difference = new Vector2(0,0);
+            rigidBody.angularVelocity = 0;
+        }
+
+        if (transform.localPosition.y < -0.375 && !holdMeDaddy)
+        {
+            transform.localPosition = new Vector3(0.25f, -0.17f);
+            transform.rotation = Quaternion.identity;
+            rigidBody.velocity = new Vector2(0, 0);
+            rigidBody.gravityScale = 0;
+            holdMeDaddy = false;
+            difference = new Vector2(0,0);
+            rigidBody.angularVelocity = 0;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (holdMeDaddy)
+        {
+            difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) transform.position;
+            rigidBody.AddForce(difference * speed);
+        }
     }
 
     private void OnMouseDown()
     {
-        difference = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2) transform.position;
         rigidBody.velocity = new Vector2(0, 0);
+        rigidBody.angularVelocity = 0;
+        rigidBody.gravityScale = 0.5f;
+        holdMeDaddy = true;
     }
 
     private void OnMouseDrag()
     {
-        transform.position = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition) - difference;
-        
     }
 
     private void OnMouseUp()
     {
+        if (holdMeDaddy)
+        {
+            if (random.NextDouble() > 0.5)
+            {
+                rigidBody.angularVelocity = (float) (random.NextDouble() * 30 + 100);
+            }
+            else
+            {
+                rigidBody.angularVelocity = -(float) (random.NextDouble() * 30 + 100);
+            }
+
+            holdMeDaddy = false;
+            difference = new Vector2(0, 0);
+        }
     }
 }
