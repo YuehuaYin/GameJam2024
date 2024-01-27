@@ -7,11 +7,11 @@ public class Sponge : MonoBehaviour
 {
     private Vector2 difference = Vector2.zero;
     private Vector2 originalPos;
-    [SerializeField] int bucketDirt = 10;
+    [SerializeField] int bucketDirt;
     private bool cleaning = false;
     //first fame
     [SerializeField] GameObject manager;
-    [SerializeField] int baseBucketDirt = 10;
+    [SerializeField] public int baseBucketDirt;
     public void Start()
     {
         originalPos = GetComponent<Transform>().position;
