@@ -46,7 +46,7 @@ public class Bucket : MonoBehaviour
     public void resetBucket()
     {
         pissEmission.enabled = false;
-        shitEmission.enabled = false;
+        shitEmission.enabled = false; 
         full = true;
         timeSpentEmptying = 0;
         emptying = false;
