@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class TileBuyer : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class TileBuyer : MonoBehaviour
     public Tile unbuilt;
     public AudioSource audio;
 
+
     //public int money = GameManager.money;
 
     public Tilemap tm;
@@ -24,6 +26,13 @@ public class TileBuyer : MonoBehaviour
     private Dictionary<Vector2Int, Tile> tileCoords;
 
     private Dictionary<Vector2Int, bool> isOccupied = new Dictionary<Vector2Int, bool>();
+
+    public void loadNextLevel() {
+        if (GameManager.money > getLevelCost()) {
+            GameManager.nextLevel();
+            SceneManager.LoadScene(("Level " + (GameManager.level+1)))
+        }
+    }
 
     //Add more of these to set up the initial state for each level
     private void level1Start() {
