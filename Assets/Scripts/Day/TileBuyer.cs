@@ -31,12 +31,14 @@ public class TileBuyer : MonoBehaviour
     private Dictionary<Vector2Int, bool> isOccupied = new Dictionary<Vector2Int, bool>();
 
     private int getLevelCost() {
-        return (GameManager.level * 1);
+        return Mathf.RoundToInt((Mathf.Pow(1.5f,GameManager.level) * 100));
     }
 
     public void loadNextLevel() {
         if (GameManager.money > getLevelCost()) {
+            GameManager.money -= getLevelCost();
             GameManager.newStage();
+            
             SceneManager.LoadScene(("Level " + (GameManager.level)));
         }
     }
@@ -60,10 +62,7 @@ public class TileBuyer : MonoBehaviour
 
         //Building stuff to start with
 
-        buildInitialTile(new Vector2Int(0,0));
-        buildInitialTile(new Vector2Int(0,-1));
-        isOccupied[(new Vector2Int(0,0))] = true;
-        isOccupied[(new Vector2Int(0,-1))] = true;        
+        
     }
     public void level2Start(){
         buildXY(3,3,2);
@@ -107,8 +106,9 @@ public class TileBuyer : MonoBehaviour
                 }else if (currentStage > 1 && i == (x- 1) && j == (y - 1)) {
                     tileCoords.Add(new Vector2Int(-i,-j),bar);
                 
-                }else if (currentStage > 2 && i == (x -1) && j == 0 ){
+                }else if (currentStage > 2 && j == (x - 1) && i == 0 ){
                     tileCoords.Add(new Vector2Int(-i,-j),entrance);
+                    Debug.Log("ha");
 
                 }else if (i == 0){
                     tileCoords.Add(new Vector2Int(-i,-j),rightWall);
@@ -121,11 +121,15 @@ public class TileBuyer : MonoBehaviour
             }
             
         }
+        buildInitialTile(new Vector2Int(0,0));
+        buildInitialTile(new Vector2Int(0,-1));
+        isOccupied[(new Vector2Int(0,0))] = true;
+        isOccupied[(new Vector2Int(0,-1))] = true;        
 
     }
 
     //Replace the values to alter the prices of tiles for each level
-    private static int[] prices = {1,2,3,4,5,6};
+    private static int[] prices = {20,30,40,50,60,70};
 
     public static  int getPrice() {
         return prices[GameManager.level-1];
@@ -148,8 +152,8 @@ public class TileBuyer : MonoBehaviour
         
 
         //change to getPrice when level system set up
-        if(GameManager.money > 0 && !isItOccupied){
-            GameManager.money = GameManager.money -1;
+        if(GameManager.money >= getPrice() && !isItOccupied){
+            GameManager.money = GameManager.money - getPrice();
             
             tm.SetTile(convVector(pos),tileCoords[pos]);
                 if (tileCoords[pos] == bar)
@@ -203,7 +207,6 @@ public class TileBuyer : MonoBehaviour
         break;
 
         GameManager.tilesOwned = 0;
-        buyNextText.text = "Buy next level\nCost: " + getLevelCost();
         }
         
     }
@@ -211,7 +214,7 @@ public class TileBuyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        buyNextText.text = ("Buy next level\nCost: " + getLevelCost());
     }
 
     void OnMouseDown() {

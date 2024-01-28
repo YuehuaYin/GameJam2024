@@ -22,6 +22,7 @@ public class minigameManager : MonoBehaviour
     void Start()
     {
         timer = 0;
+        updateMoney();
     }
 
     // Update is called once per frame

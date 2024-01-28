@@ -60,7 +60,7 @@ public class ToiletController : MonoBehaviour
             timer = 0;
             if (bucketState == 0)
             {
-                manager.winGame();
+                //manager.winGame();
                 bucketState = 3;
                 bucket.GetComponent<Bucket>().resetBucket();
                 sponge.GetComponent<Sponge>().resetCleaning();
@@ -81,6 +81,7 @@ public class ToiletController : MonoBehaviour
         {
             case 1:
                 bucketState = 0;
+                manager.winGame();
                 changeSprite(cleanEmpty);
                 break;
             case 3:
@@ -95,6 +96,7 @@ public class ToiletController : MonoBehaviour
         switch (bucketState)
         {
             case 2:
+            manager.winGame();
                 bucketState = 0;
                 changeSprite(cleanEmpty);
                 break;

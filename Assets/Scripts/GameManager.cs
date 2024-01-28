@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public static void winGame()
     {
-        money = money + Mathf.RoundToInt(15 * (1 + tilesOwned * 0.1f));
+        money = money + Mathf.RoundToInt(15 * (1 + level * 0.2f) * (1 + tilesOwned * 0.1f));
     }
     public static void loseGame()
     {

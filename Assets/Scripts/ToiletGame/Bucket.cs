@@ -22,10 +22,8 @@ public class Bucket : MonoBehaviour
 
     [SerializeField] AudioSource emptyBucketSound;
     [SerializeField] AudioSource peeArrivalSound;
-
     private ParticleSystem.EmissionModule pissEmission;
     private ParticleSystem.EmissionModule shitEmission;
-    private ParticleSystem.EmissionModule cumEmission;
     //first fame
     [SerializeField] Vector3 pointA;
     [SerializeField] Vector3 pointB;
@@ -153,6 +151,7 @@ public class Bucket : MonoBehaviour
     private void OnMouseUp()
     {
         GetComponent<Transform>().localPosition = new Vector3(originalPos.x, originalPos.y, 0);
+
     }
     private void EnterDrain()
     {

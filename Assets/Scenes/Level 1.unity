@@ -395,6 +395,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 804988520}
   - {fileID: 1420417982}
   - {fileID: 1529276558}
   - {fileID: 1791769923}
@@ -739,13 +740,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804988518}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0071, y: -0.0703, z: 0}
-  m_LocalScale: {x: 7.1942, y: 4.1206, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.7767751, y: -17.592575, z: 0}
+  m_LocalScale: {x: 1800.3486, y: 1031.1803, z: 250.25002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 909720562}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 475553172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909720560
 GameObject:
@@ -2072,10 +2073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725d2f8a13c93704c81293a6aac8e0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: {fileID: 11400000, guid: df88682e89c6db8458d7ac9610b8a1e3, type: 2}
-  entrance: {fileID: 11400000, guid: 6abdf169f2a5c6b47aee21a4abcdacc4, type: 2}
-  bar: {fileID: 11400000, guid: 6abdf169f2a5c6b47aee21a4abcdacc4, type: 2}
-  toilets: {fileID: 11400000, guid: 6abdf169f2a5c6b47aee21a4abcdacc4, type: 2}
+  stage: {fileID: 11400000, guid: bc33075395c965b4eb172644668531f7, type: 2}
+  entrance: {fileID: 11400000, guid: abf0b98ae69248040988f1684dca35ca, type: 2}
+  bar: {fileID: 11400000, guid: a607d9252ccdd81448c4b7aaece58637, type: 2}
+  toilets: {fileID: 11400000, guid: 458c9fec5e4e4024fba9564044b86254, type: 2}
   empty: {fileID: 11400000, guid: 4ebcac5435bb57e4db331de0630864c4, type: 2}
   corner: {fileID: 11400000, guid: df88682e89c6db8458d7ac9610b8a1e3, type: 2}
   leftWall: {fileID: 11400000, guid: e4f40f970e257f042ac622de7e39facd, type: 2}
@@ -2131,4 +2132,3 @@ SceneRoots:
   - {fileID: 475553172}
   - {fileID: 1311262817}
   - {fileID: 953050802}
-  - {fileID: 804988520}

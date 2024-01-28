@@ -11,7 +11,6 @@ public class Zoom : MonoBehaviour
     {
         camera = Camera.main; 
         int i = GameManager.level;
-        i = 1;
         camera.transform.position = new Vector3(0,(i-1) * -0.25f,-10); 
 
     }
