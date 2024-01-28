@@ -14,8 +14,11 @@ public class BottleManager : MonoBehaviour
     [SerializeField] private Transform transform;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private Vector3 returnPosition;
 
     public float speed = 20f;
+
+    public float gravity = 0.5f;
 
     //first fame
     public void Start()
@@ -36,20 +39,9 @@ public class BottleManager : MonoBehaviour
         }
         
         
-        if (transform.localPosition.x > 0.5 || transform.localPosition.x < -0.5 || transform.localPosition.y < -0.5)
+        if (transform.localPosition.x < -0.48 || transform.localPosition.x > 0.928 || transform.localPosition.y < -0.484)
         {
-            transform.localPosition = new Vector3(0.25f, -0.17f);
-            transform.rotation = Quaternion.identity;
-            rigidBody.velocity = new Vector2(0, 0);
-            rigidBody.gravityScale = 0;
-            holdMeDaddy = false;
-            difference = new Vector2(0,0);
-            rigidBody.angularVelocity = 0;
-        }
-
-        if (transform.localPosition.y < -0.375 && !holdMeDaddy)
-        {
-            transform.localPosition = new Vector3(0.25f, -0.17f);
+            transform.localPosition = returnPosition;
             transform.rotation = Quaternion.identity;
             rigidBody.velocity = new Vector2(0, 0);
             rigidBody.gravityScale = 0;
@@ -72,7 +64,7 @@ public class BottleManager : MonoBehaviour
     {
         rigidBody.velocity = new Vector2(0, 0);
         rigidBody.angularVelocity = 0;
-        rigidBody.gravityScale = 0.5f;
+        rigidBody.gravityScale = gravity;
         holdMeDaddy = true;
     }
 
