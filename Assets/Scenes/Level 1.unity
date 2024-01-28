@@ -2082,6 +2082,7 @@ MonoBehaviour:
   rightWall: {fileID: 11400000, guid: 83a3c2b4c1f896044bf76acb62133286, type: 2}
   unbuilt: {fileID: 11400000, guid: e62ab099f959a954a8b2944d3d4a2140, type: 2}
   audio: {fileID: 1901665508}
+  buyNextText: {fileID: 569903576}
   tm: {fileID: 2099958417}
 --- !u!19719996 &2099958419
 TilemapCollider2D:
