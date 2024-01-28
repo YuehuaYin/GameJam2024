@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int level { get; private set; } = 1;
+    public static int level { get; private set; } = 4;
 
     public static int money { get; set;}
 
     public static int tilesOwned { get; set;}
     public static GameManager instance = instance;
 
-    public static bool toiletUnlocked;
-    public static bool barUnlocked;
-    public static bool bouncerUnlocked;
+    public static bool toiletUnlocked = true;
+    public static bool barUnlocked = true;
+    public static bool bouncerUnlocked = true;
 
     // Start is called before the first frame update
     void Start()
