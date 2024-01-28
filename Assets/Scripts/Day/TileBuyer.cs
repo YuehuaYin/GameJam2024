@@ -52,7 +52,7 @@ public class TileBuyer : MonoBehaviour
         // tileCoords.Add(new Vector2Int(0,-1),toilets);
         // tileCoords.Add(new Vector2Int(-1,0),leftWall);
         // tileCoords.Add(new Vector2Int(-1,-1),empty);     
-        buildXY(2,2);
+        buildXY(2,2,1);
         //tileCoords.Add(new Vector2Int(-1,-2),empty);  
 
         //Building stuff to start with
@@ -63,27 +63,27 @@ public class TileBuyer : MonoBehaviour
         isOccupied[(new Vector2Int(0,-1))] = true;        
     }
     public void level2Start(){
-        buildXY(3,3);
+        buildXY(3,3,2);
 
     }
     public void level3Start(){
-        buildXY(4,4);
+        buildXY(4,4,3);
 
     }
     public void level4Start(){
-        buildXY(5,5);
+        buildXY(5,5,4);
 
     }
     public void level5Start(){
-        buildXY(6,6);
+        buildXY(6,6,5);
 
     }
     public void level6Start(){
-        buildXY(7,7);
+        buildXY(7,7,6);
 
     }
 
-    public void buildXY(int x, int y){
+    public void buildXY(int x, int y, int currentStage){
         
         
         //Set up initial unbuilt
@@ -97,7 +97,16 @@ public class TileBuyer : MonoBehaviour
         for (int i = 0; i < x ; i++){
             for (int j = 0; j < y ; j++){
                 if (i == 0 && j ==0) {
-                    tileCoords.Add(new Vector2Int(-i,-j),corner);
+                    tileCoords.Add(new Vector2Int(-i,-j),stage);
+                }else if (j == 0 & i == (y-1)) {
+                    tileCoords.Add(new Vector2Int(-i,-j),toilets);
+                
+                }else if (currentStage > 1 && i == (x- 1) && j == (y - 1)) {
+                    tileCoords.Add(new Vector2Int(-i,-j),bar);
+                
+                }else if (currentStage > 2 && i == (x -1) && j == 0 ){
+                    tileCoords.Add(new Vector2Int(-i,-j),entrance);
+
                 }else if (i == 0){
                     tileCoords.Add(new Vector2Int(-i,-j),rightWall);
                 }else if (j == 0){
