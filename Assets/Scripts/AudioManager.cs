@@ -44,23 +44,23 @@ public class AudioManager : MonoBehaviour
         }
         else if (nextScene.Equals("TitleScene") || nextScene.Equals("Level 1") || nextScene.Equals("Level 6"))
         {
-            StartCoroutine(ChangeSong(basement));
+            if (!GetPlaying().Equals(basement)) StartCoroutine(ChangeSong(basement));
         }
         else if (nextScene.Equals("Level 2"))
         {
-            StartCoroutine(ChangeSong(club));
+            if (!GetPlaying().Equals(club)) StartCoroutine(ChangeSong(club));
         }
         else if (nextScene.Equals("Level 3"))
         {
-            StartCoroutine(ChangeSong(arena));
+            if (!GetPlaying().Equals(arena)) StartCoroutine(ChangeSong(arena));
         }
         else if (nextScene.Equals("Level 4"))
         {
-            StartCoroutine(ChangeSong(space));
+            if (!GetPlaying().Equals(space)) StartCoroutine(ChangeSong(space));
         }
         else if (nextScene.Equals("Level 5"))
         {
-            StartCoroutine(ChangeSong(evil));
+            if (!GetPlaying().Equals(evil)) StartCoroutine(ChangeSong(evil));
         }
 
     }
@@ -96,5 +96,17 @@ public class AudioManager : MonoBehaviour
 
         biggie.volume = 0;
         biggie.Stop();
+    }
+
+    private AudioClip GetPlaying()
+    {
+        if (source1.isPlaying)
+        {
+            return source1.clip;
+        }
+        else
+        {
+            return source2.clip;
+        }
     }
 }
