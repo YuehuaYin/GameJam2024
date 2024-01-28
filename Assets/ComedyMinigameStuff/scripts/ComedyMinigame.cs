@@ -249,6 +249,7 @@ public class ComedyMinigame : MonoBehaviour
         {
             if (guessingNum < jokeLength-1)
             {
+                GameManager.winGame();
                 successSound.GetComponent<AudioSource>().Play();
             }
             else
@@ -286,6 +287,7 @@ public class ComedyMinigame : MonoBehaviour
         Debug.Log("Failed");
         failSound.GetComponent<AudioSource>().Play();
         resetstuff();
+        GameManager.loseGame();
         breakTime = true;
     }
 }

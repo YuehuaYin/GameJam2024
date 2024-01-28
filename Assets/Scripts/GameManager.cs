@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     {
         money = money + Mathf.RoundToInt(15 * (1 + tilesOwned * 0.1f));
     }
+    public static void loseGame()
+    {
+
+    }
     public static void newStage()
     {
         toiletUnlocked = false;
