@@ -149,7 +149,19 @@ public class TileBuyer : MonoBehaviour
             GameManager.money = GameManager.money -1;
             
             tm.SetTile(convVector(pos),tileCoords[pos]);
-            isOccupied[(pos)] = true;
+                if (tileCoords[pos] == bar)
+                {
+                    GameManager.barUnlocked = true;
+                }
+                if (tileCoords[pos] == toilets)
+                {
+                    GameManager.toiletUnlocked = true;
+                }
+                if (tileCoords[pos] == entrance)
+                {
+                    GameManager.bouncerUnlocked = true;
+                }
+                isOccupied[(pos)] = true;
             GameManager.tilesOwned = GameManager.tilesOwned + 1;
             audio.Play();
         }
