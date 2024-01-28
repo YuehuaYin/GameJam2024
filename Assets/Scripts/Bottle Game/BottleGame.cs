@@ -62,15 +62,15 @@ public class BottleGame : MonoBehaviour
         {
             (GameObject, GameObject) t = (CustomerGreenLeft, CustomerGreenRight);
             
-            switch (random.Next(1,bottleNum))
+            switch (random.Next(1,bottleNum+1))
             {
                 case 1:
                     break;
                 case 2: 
-                    t = (CustomerGreenLeft, CustomerGreenRight);
+                    t = (CustomerBlueLeft, CustomerBlueRight);
                     break;
                 case 3: 
-                    t = (CustomerGreenLeft, CustomerGreenRight);
+                    t = (CustomerYellowLeft, CustomerYellowRight);
                     break;
             }
             
@@ -78,12 +78,14 @@ public class BottleGame : MonoBehaviour
             {
                 if (left == null)
                 {
-                    left = Instantiate(t.Item1, LeftSpawn);
+                    left = Instantiate(t.Item1, gameObject.transform);
+                    left.transform.position = LeftSpawn.position;
                     StartCoroutine(startLeft(left));
                 }
                 else if (right == null)
                 {
-                    right = Instantiate(t.Item2, RightSpawn);
+                    right = Instantiate(t.Item2, gameObject.transform);
+                    right.transform.position = RightSpawn.position;
                     StartCoroutine(startRight(right));
                 }
             }
@@ -91,12 +93,14 @@ public class BottleGame : MonoBehaviour
             {
                 if (right == null)
                 {
-                    right = Instantiate(t.Item2, RightSpawn);
+                    right = Instantiate(t.Item2, gameObject.transform);
+                    right.transform.position = RightSpawn.position;
                     StartCoroutine(startRight(right));
                 }
                 else if (left == null)
                 {
-                    left = Instantiate(t.Item1, LeftSpawn);
+                    left = Instantiate(t.Item1, gameObject.transform);
+                    left.transform.position = LeftSpawn.position;
                     StartCoroutine(startLeft(left));
                 }
             }
@@ -107,24 +111,26 @@ public class BottleGame : MonoBehaviour
 
     IEnumerator startLeft(GameObject customer)
     {
+        customer.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         while (customer.transform.localPosition.x < LeftPosition.localPosition.x)
         {
             customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.03f, customer.transform.localPosition.y);
             yield return null;
         }
 
-        customer.GetComponent<Customer>().start = true;
+        customer.GetComponentInChildren<Customer>().start = true;
     }
 
     IEnumerator startRight(GameObject customer)
     {
-        while (customer.transform.localPosition.x > RightSpawn.localPosition.x)
+        customer.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        while (customer.transform.localPosition.x > RightPosition.localPosition.x)
         {
             customer.transform.localPosition = new Vector3(customer.transform.localPosition.x - 0.03f, customer.transform.localPosition.y);
             yield return null;
         }
 
-        customer.GetComponent<Customer>().start = true;
+        customer.GetComponentInChildren<Customer>().start = true;
     }
 
     public void finishLeft(GameObject customer)

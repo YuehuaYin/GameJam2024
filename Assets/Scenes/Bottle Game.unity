@@ -317,7 +317,9 @@ MonoBehaviour:
   CustomerYellowLeft: {fileID: 548709790427691946, guid: 68599426577b04642b41ddfe2e353ee2, type: 3}
   CustomerYellowRight: {fileID: 548709790427691946, guid: ffc8f1b65a49cf44692c1cb972486fc2, type: 3}
   LeftSpawn: {fileID: 985988767}
+  LeftPosition: {fileID: 924609212}
   RightSpawn: {fileID: 1196531801}
+  RightPosition: {fileID: 621232763}
 --- !u!1 &280094514
 GameObject:
   m_ObjectHideFlags: 0

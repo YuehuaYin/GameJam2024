@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 9171318853406304300}
   - component: {fileID: 6119644220478164582}
   - component: {fileID: 632966706783284884}
-  - component: {fileID: 3337400250876777741}
+  - component: {fileID: 7604757218190857343}
   m_Layer: 9
   m_Name: Particle
   m_TagString: Untagged
@@ -5083,7 +5083,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3337400250876777741
+--- !u!114 &7604757218190857343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5092,7 +5092,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2507501699395500702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 036f268e67057ae4abeeed88548921e6, type: 3}
+  m_Script: {fileID: 11500000, guid: d0cddf5d8c6d41a48fa805874f09e594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8975652846107206637
