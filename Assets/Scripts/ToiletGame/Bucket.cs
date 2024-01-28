@@ -33,12 +33,13 @@ public class Bucket : MonoBehaviour
     public void Start()
     {
         originalPos = GetComponent<Transform>().localPosition;
-        pissEmission.enabled = false;
-        shitEmission.enabled = false;
-        cumEmission.enabled = false;
+        
         gameTime = 0;
         pissEmission = piss.emission;
-        shitEmission = shit.emission;
+        shitEmission = shit.emission; 
+        pissEmission.enabled = false;
+        shitEmission.enabled = false;
+
         peeArrivalSound.Play();
         aimedPoint = originalPos;
     }
@@ -46,7 +47,6 @@ public class Bucket : MonoBehaviour
     {
         pissEmission.enabled = false;
         shitEmission.enabled = false;
-        cumEmission.enabled = false;
         full = true;
         timeSpentEmptying = 0;
         emptying = false;

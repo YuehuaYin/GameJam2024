@@ -5371,7 +5371,7 @@ MonoBehaviour:
   emptyBucketSound: {fileID: 1619699171}
   peeArrivalSound: {fileID: 757865837}
   pointA: {x: -0.9, y: -0.2, z: 0}
-  pointB: {x: -0.95, y: -0.3, z: 0}
+  pointB: {x: -0.7, y: -0.3, z: 0}
   pointC: {x: -0.8, y: -0.1, z: 0}
 --- !u!50 &762250905
 Rigidbody2D:
@@ -10560,7 +10560,7 @@ MonoBehaviour:
   bg2: {fileID: 21300000, guid: f35159c9b74f4964396fd5e38945ed6f, type: 3}
   bg3: {fileID: 21300000, guid: 50a8223297f14e24f9be24b11dbf7db5, type: 3}
   bg4: {fileID: 21300000, guid: 33791128c8a7bdc4d9133e852d005e19, type: 3}
-  bg5: {fileID: 21300000, guid: cd703cc8e14bf7746a2db29331df200b, type: 3}
+  bg5: {fileID: 21300000, guid: 0b5ee58ba61d78e4488aa9687a854120, type: 3}
   bg6: {fileID: 21300000, guid: d9d84dffa2dc0094da560f386eea098c, type: 3}
   bucketState: 0
   timer: 0
