@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int level { get; private set; } = 1;
+    public static int level { get; private set; } = 4;
 
     public static int money { get; set;}
 
