@@ -7,13 +7,20 @@ public class ComedyMinigame : MonoBehaviour
 {
 
     List<string> emojibank = new List<string> { "cheese", "devil", "eggplant", "ghost", "nerd", "sadcat", "shark", "skull", "smile", "think" };
-    List<string> hecklebank = new List<string> { "booooooooo!!!", "you suck!", "who is this loser?", "get a real job", "not funny..."};
+    List<string> hecklebank = new List<string> { "booooooooo!!!", "you suck!", "who is this loser?", "get a real job", "not funny.."};
 
     public GameObject background;
     public GameObject speechPrefab;
     public GameObject hecklePrefab;
+
     public timerBar timerbar;
     public GameObject jokeSelections;
+
+    public GameObject successSound;
+    public GameObject cheerSound;
+    public GameObject failSound;
+    public GameObject promptSound;
+
     jokes[] jokeObjects;
 
     System.Random rand = new System.Random();
@@ -24,11 +31,12 @@ public class ComedyMinigame : MonoBehaviour
 
     [SerializeField] bool showingEmojis = false;
     [SerializeField] bool breakTime = false;
+    [SerializeField] float breakLength;
 
     [SerializeField] int bubbleNum = 0;
     [SerializeField] float bubbleTimer = 3.0f;
 
-    [SerializeField] float jokeTimer = 15.0f;
+    [SerializeField] float jokeTimer = 20.0f;
     [SerializeField] float timer;
 
     [SerializeField] bool heckling = false;
@@ -45,32 +53,39 @@ public class ComedyMinigame : MonoBehaviour
         switch (GameManager.level)
         {
             case 1:
-                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background basement");
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("bgbasement");
                 heckleRate = 0;
+                breakLength = 10;
                 break;
             case 2:
-                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background comedy club");
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("bgclub");
                 heckleRate = 1;
+                breakLength = 9;
                 break;
             case 3:
-                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background arena");
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("bgarena");
                 heckleRate = 2;
+                breakLength = 8;
                 break;
             case 4:
-                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background space");
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("bgspace");
                 heckleRate = 3;
+                breakLength = 7;
                 break;
             case 5:
-                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background cthulu");
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("bgcthulu");
                 heckleRate = 4;
+                breakLength = 6;
                 break;
             case 6:
-                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background basement");
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("bgbasement");
                 heckleRate = 5;
+                breakLength = 5;
                 break;
         }
 
         jokeObjects = jokeSelections.GetComponentsInChildren<jokes>();
+        resetstuff();
         generateJoke();
     }
 
@@ -105,24 +120,11 @@ public class ComedyMinigame : MonoBehaviour
 
         else if (breakTime)
         {
-            if (timer > bubbleTimer)
+            if (timer > breakLength)
             {
-                if (bubble != null)
-                {
-                    Destroy(bubble);
-                }
-
-                if (bubbleNum < jokeLength)
-                {
-                    speechBubble(joke[bubbleNum]);
-                }
-                else
-                {
-                    showingEmojis = false;
-                    jokeSelections.SetActive(true);
-                    setJokeSelections();
-                    timer = 0;
-                }
+                timer = 0;
+                breakTime = false;
+                generateJoke();
             }
             else
             {
@@ -164,7 +166,7 @@ public class ComedyMinigame : MonoBehaviour
         }
         else
         {
-            if (rand.Next(1000) < heckleRate)
+            if (rand.Next(500) < heckleRate)
             {
                 spawnHeckle();
             }
@@ -172,18 +174,16 @@ public class ComedyMinigame : MonoBehaviour
     }
 
     void generateJoke() {
-        timerbar.gameObject.GetComponent<Image>().fillAmount = 0;
-        showingEmojis = true;
-        jokeSelections.SetActive(false);
+
         joke.Clear();
-        bubbleNum = 0;
-        guessingNum = 0;
 
         for (int i = 0; i < jokeLength; i++)
         {
             joke.Add(emojibank[rand.Next(emojibank.Count)]);
         }
+
         timer = 0;
+        showingEmojis = true;
     }
 
     public double NextDouble(double MinValue, double MaxValue)
@@ -199,6 +199,7 @@ public class ComedyMinigame : MonoBehaviour
         bubble.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(emojiName);
         bubbleNum++;
         timer = 0;
+        promptSound.GetComponent<AudioSource>().Play();
     }
 
     void spawnHeckle()
@@ -246,6 +247,15 @@ public class ComedyMinigame : MonoBehaviour
     {
         if (emojiName == joke[guessingNum])
         {
+            if (guessingNum < jokeLength-1)
+            {
+                successSound.GetComponent<AudioSource>().Play();
+            }
+            else
+            {
+                cheerSound.GetComponent<AudioSource>().Play();
+            }
+
             guessingNum++;
             setJokeSelections();
         }
@@ -255,15 +265,27 @@ public class ComedyMinigame : MonoBehaviour
         }
     }
 
+    void resetstuff()
+    {
+        timerbar.gameObject.GetComponent<Image>().fillAmount = 0;
+        jokeSelections.SetActive(false);
+        bubbleNum = 0;
+        guessingNum = 0;
+        timer = 0;
+    }
+
     void success()
     {
         Debug.Log("Win");
-        generateJoke();
+        resetstuff();
+        breakTime = true;
     }
 
     void failure()
     {
         Debug.Log("Failed");
-        generateJoke();
+        failSound.GetComponent<AudioSource>().Play();
+        resetstuff();
+        breakTime = true;
     }
 }
