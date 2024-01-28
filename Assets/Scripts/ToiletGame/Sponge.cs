@@ -9,12 +9,14 @@ public class Sponge : MonoBehaviour
     private Vector2 originalPos;
     [SerializeField] int bucketDirt;
     private bool cleaning = false;
+    [SerializeField] AudioSource scrubbing;
     //first fame
     [SerializeField] GameObject manager;
     [SerializeField] public int baseBucketDirt;
     public void Start()
     {
         originalPos = GetComponent<Transform>().position;
+        bucketDirt = baseBucketDirt;
     }
 
     private void Update()
@@ -28,6 +30,7 @@ public class Sponge : MonoBehaviour
             {
                 Debug.Log("Clean");
                 cleaning = false;
+                scrubbing.Stop();
                 manager.GetComponent<ToiletController>().cleanBucket();
             }
             else
@@ -37,6 +40,7 @@ public class Sponge : MonoBehaviour
                     Debug.Log("Cleaning");
                     bucketDirt -= 1;
                     cleaning = false;
+                    scrubbing.Stop();
                 }
             }
         }
@@ -62,10 +66,12 @@ public class Sponge : MonoBehaviour
         if (collision.gameObject.tag == "Bucket")
         {
             cleaning = true;
+            scrubbing.Play();
         }
     }
     public void resetCleaning()
     {
         bucketDirt = baseBucketDirt;
     }
+    
 }

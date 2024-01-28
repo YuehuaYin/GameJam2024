@@ -5147,7 +5147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.5
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5262,7 +5262,7 @@ MonoBehaviour:
   transform: {fileID: 8704328723411621144}
   rigidBody: {fileID: 3905449448654471392}
   particleSystem: {fileID: 6119644220478164582}
-  returnPosition: {x: 0.384, y: -0.17, z: 0}
+  returnPosition: {x: 0.302, y: -0.17, z: 0}
   speed: 30
   gravity: 0.5
 --- !u!114 &6659574947819759280

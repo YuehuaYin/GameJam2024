@@ -20,6 +20,9 @@ public class Bucket : MonoBehaviour
 
     [SerializeField] private GameObject manager;
 
+    [SerializeField] AudioSource emptyBucketSound;
+    [SerializeField] AudioSource peeArrivalSound;
+
     private ParticleSystem.EmissionModule pissEmission;
     private ParticleSystem.EmissionModule shitEmission;
     //first fame
@@ -31,6 +34,7 @@ public class Bucket : MonoBehaviour
         gameTime = 0;
         pissEmission = piss.emission;
         shitEmission = shit.emission;
+        peeArrivalSound.Play();
     }
     public void resetBucket()
     {
@@ -39,7 +43,8 @@ public class Bucket : MonoBehaviour
         full = true;
         timeSpentEmptying = 0;
         emptying = false;
-
+        emptyBucketSound.Stop();
+        peeArrivalSound.Play();
     }
     private void Update()
     {
@@ -85,6 +90,7 @@ public class Bucket : MonoBehaviour
         shitEmission.enabled = false;
         emptying = false;
         full = false;
+        emptyBucketSound.Stop();
         GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
         manager.GetComponent<ToiletController>().emptyBucket();
     }
@@ -93,6 +99,7 @@ public class Bucket : MonoBehaviour
         pissEmission.enabled = false;
         shitEmission.enabled = false;
         emptying = false;
+        emptyBucketSound.Stop();
         GetComponent<Transform>().rotation = new Quaternion(0, 0, 0, 0);
     }
     private void OnMouseDown()
@@ -117,6 +124,7 @@ public class Bucket : MonoBehaviour
             pissEmission.enabled = true;
             shitEmission.enabled = true;
             emptying = true;
+            emptyBucketSound.Play();
             GetComponent<Transform>().rotation = new Quaternion(0, 0, 1, 0);
         }
     }
