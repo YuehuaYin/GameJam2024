@@ -15,9 +15,10 @@ public class TileBuyer : MonoBehaviour
     public Tile rightWall;
     public Tile unbuilt;
 
-    public int money = 5;
+    public int money = 100;
 
     public Tilemap tm;
+
 
     private Dictionary<Vector2Int, Tile> tileCoords;
 
@@ -69,12 +70,14 @@ public class TileBuyer : MonoBehaviour
     public void buildXY(int x, int y){
         
         
-        
+        //Set up initial unbuilt
         for (int i = 0; i < x ; i++){
             for (int j = 0; j < y ; j++){
                 tm.SetTile(new Vector3Int(-i,-j),unbuilt);
             }
         }
+
+        //Fill tileCoords with empty tiles (and walls)
         for (int i = 0; i < x ; i++){
             for (int j = 0; j < y ; j++){
                 if (i == 0 && j ==0) {
@@ -100,6 +103,7 @@ public class TileBuyer : MonoBehaviour
         return prices[GameManager.level-1];
     }
 
+    //Redundant
     public void buyTile(Vector2Int pos) {
         if(GameManager.money>=getPrice()) {
             GameManager.money = GameManager.money - getPrice();
@@ -111,16 +115,17 @@ public class TileBuyer : MonoBehaviour
     }
     public void buildTile(Vector2Int pos) {
         Vector3Int v = new Vector3Int(pos.x,pos.y);
-        if (isOccupied.TryGetValue(pos, out bool isItOccupoed)){
+        if (isOccupied.TryGetValue(pos, out bool isItOccupied)){
 
         
 
-
-        if(money > 0 && !isItOccupoed){
+        //change to getPrice when level system set up
+        if(money > 0 && !isItOccupied){
             money = money -1;
             
             tm.SetTile(convVector(pos),tileCoords[pos]);
             isOccupied[(pos)] = true;
+            GameManager.tilesOwned = GameManager.tilesOwned + 1;
         }
         }
     }
@@ -135,7 +140,7 @@ public class TileBuyer : MonoBehaviour
     {
         tileCoords = new Dictionary<Vector2Int,Tile> {};
         int i = GameManager.level;
-        i = 1;
+        i = 4;
         switch (i){
         case 1:
         level1Start();
@@ -156,7 +161,7 @@ public class TileBuyer : MonoBehaviour
         level6Start();
         break;
 
-
+        GameManager.tilesOwned = 0;
         
         }
         

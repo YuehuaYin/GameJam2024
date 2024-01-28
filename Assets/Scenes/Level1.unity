@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 521580153}
   - component: {fileID: 521580152}
   - component: {fileID: 521580151}
+  - component: {fileID: 521580154}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -259,6 +260,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &521580154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521580150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9acd02e69a0e0347a501de0ff41072f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!1 &2077582750
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +497,7 @@ MonoBehaviour:
   leftWall: {fileID: 11400000, guid: 130880aae9bfbd448bb9fb3ddc92cf7b, type: 2}
   rightWall: {fileID: 11400000, guid: c3976d7bb8602d54d904f207987233c1, type: 2}
   unbuilt: {fileID: 11400000, guid: 81e62f5b9d0557a448489da1f4f09a77, type: 2}
+  money: 5
   tm: {fileID: 2099958417}
 --- !u!19719996 &2099958419
 TilemapCollider2D:
