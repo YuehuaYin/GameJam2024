@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         barUnlocked = false;
         bouncerUnlocked = false;
         tilesOwned = 0;
-        //level = level +=1;
+        level = level +=1;
     }
     // Start is called before the first frame update
     void Start()

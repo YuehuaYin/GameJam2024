@@ -27,10 +27,14 @@ public class TileBuyer : MonoBehaviour
 
     private Dictionary<Vector2Int, bool> isOccupied = new Dictionary<Vector2Int, bool>();
 
+    private int getLevelCost() {
+        return (GameManager.level * 1);
+    }
+
     public void loadNextLevel() {
         if (GameManager.money > getLevelCost()) {
-            GameManager.nextLevel();
-            SceneManager.LoadScene(("Level " + (GameManager.level+1)))
+            GameManager.newStage();
+            SceneManager.LoadScene(("Level " + (GameManager.level)));
         }
     }
 
@@ -153,8 +157,6 @@ public class TileBuyer : MonoBehaviour
     {
         tileCoords = new Dictionary<Vector2Int,Tile> {};
         int i = GameManager.level;
-        
-        i = 1; //Remove this when levels are working
         
         switch (i){
         case 1:
