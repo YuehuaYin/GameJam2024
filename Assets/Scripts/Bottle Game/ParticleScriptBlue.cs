@@ -9,7 +9,7 @@ public class ParticleScriptBlue : MonoBehaviour
     {
         if (other.name.Equals("2"))
         {
-            other.GetComponent<Customer>().fill();
+            other.GetComponent<Customer>().Fill();
         }
     }
 }

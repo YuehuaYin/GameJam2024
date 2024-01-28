@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = System.Random;
 
 public class BottleGame : MonoBehaviour
 {
@@ -18,9 +21,15 @@ public class BottleGame : MonoBehaviour
     [SerializeField] private GameObject CustomerYellowRight;
 
     [SerializeField] private Transform LeftSpawn;
+    [SerializeField] private Transform LeftPosition;
     [SerializeField] private Transform RightSpawn;
+    [SerializeField] private Transform RightPosition;
 
     private int bottleNum = 3;
+    private Random random = new Random();
+
+    private GameObject left;
+    private GameObject right;
     
     // Start is called before the first frame update
     void Start()
@@ -43,16 +52,123 @@ public class BottleGame : MonoBehaviour
             blueBottle.GetComponent<BottleManager>().gravity = 0.2f;
             bottleNum = 2;
         }
+
+        StartCoroutine(StartCustomer());
     }
 
-
-    public void finishLeft()
+    IEnumerator StartCustomer()
     {
-        
+        while (true) //CHANGE FOR WHEN GAME ENDS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        {
+            (GameObject, GameObject) t = (CustomerGreenLeft, CustomerGreenRight);
+            
+            switch (random.Next(1,bottleNum))
+            {
+                case 1:
+                    break;
+                case 2: 
+                    t = (CustomerGreenLeft, CustomerGreenRight);
+                    break;
+                case 3: 
+                    t = (CustomerGreenLeft, CustomerGreenRight);
+                    break;
+            }
+            
+            if (random.NextDouble() > 0.5f)
+            {
+                if (left == null)
+                {
+                    left = Instantiate(t.Item1, LeftSpawn);
+                    StartCoroutine(startLeft(left));
+                }
+                else if (right == null)
+                {
+                    right = Instantiate(t.Item2, RightSpawn);
+                    StartCoroutine(startRight(right));
+                }
+            }
+            else
+            {
+                if (right == null)
+                {
+                    right = Instantiate(t.Item2, RightSpawn);
+                    StartCoroutine(startRight(right));
+                }
+                else if (left == null)
+                {
+                    left = Instantiate(t.Item1, LeftSpawn);
+                    StartCoroutine(startLeft(left));
+                }
+            }
+
+            yield return new WaitForSeconds(random.Next(10, 35));
+        }
     }
 
-    public void finishRight()
+    IEnumerator startLeft(GameObject customer)
+    {
+        while (customer.transform.localPosition.x < LeftPosition.localPosition.x)
+        {
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.03f, customer.transform.localPosition.y);
+            yield return null;
+        }
+
+        customer.GetComponent<Customer>().start = true;
+    }
+
+    IEnumerator startRight(GameObject customer)
+    {
+        while (customer.transform.localPosition.x > RightSpawn.localPosition.x)
+        {
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x - 0.03f, customer.transform.localPosition.y);
+            yield return null;
+        }
+
+        customer.GetComponent<Customer>().start = true;
+    }
+
+    public void finishLeft(GameObject customer)
+    {
+
+        StartCoroutine(slideOffLeft(customer));
+    }
+
+    public void failLeft(GameObject customer)
     {
         
+        StartCoroutine(slideOffLeft(customer));
+    }
+
+    public void finishRight(GameObject customer)
+    {
+        
+        StartCoroutine(sliderOffRight(customer));
+
+    }
+
+    public void failRight(GameObject customer)
+    {
+        
+        StartCoroutine(sliderOffRight(customer));
+    }
+
+    IEnumerator slideOffLeft(GameObject customer)
+    {
+        while (customer.transform.localPosition.x > LeftSpawn.localPosition.x)
+        {
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x - 0.03f, customer.transform.localPosition.y);
+            yield return null;
+        }
+        Destroy(customer);
+    }
+
+    IEnumerator sliderOffRight(GameObject customer)
+    {
+        while (customer.transform.localPosition.x < RightSpawn.localPosition.x)
+        {
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.03f, customer.transform.localPosition.y);
+            yield return null;
+        }
+        Destroy(customer);
     }
 }

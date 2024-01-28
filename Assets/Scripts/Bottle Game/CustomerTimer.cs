@@ -11,6 +11,6 @@ public class CustomerTimer : MonoBehaviour
     {
         float percentage = 1 - (current / max);
         transform.localScale = new Vector3(transform.localScale.x, percentage * 2);
-        timer.color = new Color32((byte)(int) (percentage * 255) , (byte)(int) (percentage * 255) ,  (byte)(int) (percentage * 255), 153);
+        timer.color = new Color32(255 , (byte)(int) (percentage * 255) ,  (byte)(int) (percentage * 255), 153);
     }
 }

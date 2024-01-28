@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-public class Customer : MonoBehaviour
+public abstract class Customer : MonoBehaviour
 {
     [SerializeField]
     private MeshFilter meshFilter;
     private Mesh mesh;
 
-    protected GameObject bottleGame;
+    protected BottleGame bottleGame;
 
     [SerializeField]
     private CustomerTimer timer;
@@ -20,7 +21,10 @@ public class Customer : MonoBehaviour
     public float time;
     public float maxtime = 20;
 
-    private bool start;
+    public bool start;
+
+    [SerializeField]
+    protected GameObject bigDaddyWholeThing;
     
     void Start()
     {
@@ -54,19 +58,26 @@ public class Customer : MonoBehaviour
 
         meshFilter.mesh = mesh;
 
-        bottleGame = GameObject.Find("BottleGame Quadrent");
+        bottleGame = GameObject.Find("BottleGame Quadrent").GetComponent<BottleGame>();
     }
 
     private void FixedUpdate()
     {
-        if (time < maxtime)
+        if (currectLiquid < targetLiquid && start)
         {
-            time += Time.deltaTime;
-            timer.updateTimer(time, maxtime);
+            if (time < maxtime)
+            {
+                time += Time.deltaTime;
+                timer.updateTimer(time, maxtime);
+            }
+            else
+            {
+                fail();
+            }
         }
     }
 
-    protected void addLiquid()
+    protected void AddLiquid()
     {
         float x = ((float) currectLiquid / targetLiquid) * (0.45f - 0.283f);
         float y = ((float) currectLiquid / targetLiquid) *(0.26f + 0.49f);
@@ -83,12 +94,12 @@ public class Customer : MonoBehaviour
         meshFilter.mesh = mesh;
     }
 
-    public void fill()
+    public virtual void Fill()
     {
         if (currectLiquid < targetLiquid)
         {
             currectLiquid++;
-            addLiquid();
+            AddLiquid();
         }
     }
     private void OnParticleCollision(GameObject other)
@@ -96,9 +107,7 @@ public class Customer : MonoBehaviour
         Debug.Log(other.name);
     }
 
-    IEnumerable angry()
+    protected virtual void fail()
     {
-        return null;
     }
-    
 }

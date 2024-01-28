@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class CustomerRight : Customer
 {
-    public void fill()
+    public override void Fill()
     {
         if (currectLiquid < targetLiquid)
         {
             currectLiquid++;
-            addLiquid();
+            AddLiquid();
         }
         else
         {
-            bottleGame.GetComponent<BottleGame>().finishRight();
+            bottleGame.finishRight(bigDaddyWholeThing);
         }
+    }
+
+    protected override void fail()
+    {
+        bottleGame.failRight(bigDaddyWholeThing);
     }
 }

@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &30484100324228154
 GameObject:
@@ -1059,7 +1059,8 @@ MonoBehaviour:
   targetLiquid: 30
   currectLiquid: 0
   time: 0
-  maxtime: 20
+  maxtime: 30
+  bigDaddyWholeThing: {fileID: 548709790427691946}
 --- !u!60 &8898530177242010056
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1089,7 +1090,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
