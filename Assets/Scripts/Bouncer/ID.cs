@@ -45,11 +45,11 @@ public class ID : MonoBehaviour
             Debug.Log("Correct!");
             correct.Play();
             AudioSource.PlayClipAtPoint(correct.clip, Vector3.zero);
-            GameManager.money += BouncerController.moneyAcceptCorrect;
+            GameManager.winGame();
         } else {
             Debug.Log("Incorrect!");
-                 AudioSource.PlayClipAtPoint(incorrect.clip, Vector3.zero);
-            GameManager.money += BouncerController.moneyAcceptIncorrect;
+            AudioSource.PlayClipAtPoint(incorrect.clip, Vector3.zero);
+            GameManager.loseGame();
         }
         Destroy(gameObject);
     }

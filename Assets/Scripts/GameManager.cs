@@ -11,10 +11,26 @@ public class GameManager : MonoBehaviour
     public static int tilesOwned { get; set;}
     public static GameManager instance = instance;
 
-    public static bool toiletUnlocked = true;
-    public static bool barUnlocked = true;
-    public static bool bouncerUnlocked = true;
+    public static bool toiletUnlocked = false;
+    public static bool barUnlocked = false;
+    public static bool bouncerUnlocked = false;
 
+    public static void winGame()
+    {
+        money = money + Mathf.RoundToInt(15 * (1 + tilesOwned * 0.1f));
+    }
+    public static void loseGame()
+    {
+
+    }
+    public static void newStage()
+    {
+        toiletUnlocked = false;
+        barUnlocked = false;
+        bouncerUnlocked = false;
+        tilesOwned = 0;
+        //level = level +=1;
+    }
     // Start is called before the first frame update
     void Start()
     {

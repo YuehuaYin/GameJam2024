@@ -169,26 +169,26 @@ public class BottleGame : MonoBehaviour
 
     public void finishLeft(GameObject customer)
     {
-
+        GameManager.winGame();
         StartCoroutine(slideOffLeft(customer)); //ADD POINTS
     }
 
     public void failLeft(GameObject customer)
     {
-        
+        GameManager.loseGame();
         StartCoroutine(slideOffLeft(customer)); //SUBTRACT POINTS??
     }
 
     public void finishRight(GameObject customer)
     {
-        
+        GameManager.winGame();
         StartCoroutine(sliderOffRight(customer));
 
     }
 
     public void failRight(GameObject customer)
     {
-        
+        GameManager.loseGame();
         StartCoroutine(sliderOffRight(customer)); 
     }
 
