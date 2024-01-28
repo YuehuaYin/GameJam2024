@@ -36,6 +36,65 @@ public class AudioManager : MonoBehaviour
 
     private void SceneChange(Scene start, Scene next)
     {
+        String nextScene = next.name;
         
+        if (nextScene.Equals("TestSystem"))
+        {
+            return;
+        }
+        else if (nextScene.Equals("TitleScene") || nextScene.Equals("Level 1") || nextScene.Equals("Level 6"))
+        {
+            StartCoroutine(ChangeSong(basement));
+        }
+        else if (nextScene.Equals("Level 2"))
+        {
+            StartCoroutine(ChangeSong(club));
+        }
+        else if (nextScene.Equals("Level 3"))
+        {
+            StartCoroutine(ChangeSong(arena));
+        }
+        else if (nextScene.Equals("Level 4"))
+        {
+            StartCoroutine(ChangeSong(space));
+        }
+        else if (nextScene.Equals("Level 5"))
+        {
+            StartCoroutine(ChangeSong(evil));
+        }
+
+    }
+
+    IEnumerator ChangeSong(AudioClip clip)
+    {
+        AudioSource biggie;
+        AudioSource smaler;
+        
+        if (source1.isPlaying)
+        {
+            biggie = source1;
+            smaler = source2;
+        }
+        else
+        {
+            biggie = source2;
+            smaler = source1;
+        }
+
+        smaler.volume = 0;
+
+        smaler.clip = clip;
+        smaler.Play();
+        
+        while (smaler.volume < 1)
+        {
+            smaler.volume += (float) 0.01;
+            biggie.volume -= (float) 0.01;
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        biggie.volume = 0;
+        biggie.Stop();
     }
 }

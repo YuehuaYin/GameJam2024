@@ -1451,7 +1451,7 @@ GameObject:
   - component: {fileID: 319149503}
   - component: {fileID: 319149502}
   - component: {fileID: 319149501}
-  - component: {fileID: 319149500}
+  - component: {fileID: 319149504}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1459,25 +1459,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &319149500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319149499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a8c3d82dc1271c478397e91ba54efef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source1: {fileID: 319149501}
-  source2: {fileID: 319149502}
-  basement: {fileID: 8300000, guid: e09cd7fb1bc20054daf7c59cd7b91a38, type: 3}
-  club: {fileID: 8300000, guid: 1879341db9d860f40b9b48ce3b9d1f19, type: 3}
-  arena: {fileID: 8300000, guid: 9cc494f1bb6420e409305e869ee28364, type: 3}
-  space: {fileID: 8300000, guid: 9566826c51985794d8c0a67034fda842, type: 3}
-  evil: {fileID: 8300000, guid: da5e70939c7c72c4f99bdfaefbf84ec1, type: 3}
 --- !u!82 &319149501
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1685,6 +1666,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319149504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319149499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034c6a1426c7463dac0ed150721080dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source1: {fileID: 319149501}
+  source2: {fileID: 319149502}
+  basement: {fileID: 8300000, guid: e09cd7fb1bc20054daf7c59cd7b91a38, type: 3}
+  club: {fileID: 8300000, guid: 1879341db9d860f40b9b48ce3b9d1f19, type: 3}
+  arena: {fileID: 8300000, guid: 9cc494f1bb6420e409305e869ee28364, type: 3}
+  space: {fileID: 8300000, guid: 9566826c51985794d8c0a67034fda842, type: 3}
+  evil: {fileID: 8300000, guid: da5e70939c7c72c4f99bdfaefbf84ec1, type: 3}
 --- !u!1 &336388072
 GameObject:
   m_ObjectHideFlags: 0
