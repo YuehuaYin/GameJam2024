@@ -587,8 +587,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Buy Next Stage
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
+  m_sharedMaterial: {fileID: -1477069402686405174, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -893,8 +893,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -753.36, y: 73.57}
-  m_SizeDelta: {x: 195.28, y: 40.86}
+  m_AnchoredPosition: {x: -752.8, y: 65.24}
+  m_SizeDelta: {x: 209.19, y: 44.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057826362
 MonoBehaviour:
@@ -1782,8 +1782,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: To Night
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
+  m_sharedMaterial: {fileID: -1477069402686405174, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
