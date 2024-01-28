@@ -14,10 +14,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - UnusedBottle
   - walls
   - Glass
-  - UnusedBottle
+  - 
   - 
   - 
   - 
@@ -44,6 +44,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Walls
+    uniqueID: 692828705
+    locked: 0
+  - name: Counter
+    uniqueID: 3782749881
+    locked: 0
+  - name: Bottles
+    uniqueID: 1717205477
+    locked: 0
   - name: front
     uniqueID: 449065193
+    locked: 0
+  - name: mega front
+    uniqueID: 3030745323
     locked: 0

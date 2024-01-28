@@ -114,7 +114,7 @@ public class BottleGame : MonoBehaviour
         customer.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         while (customer.transform.localPosition.x < LeftPosition.localPosition.x)
         {
-            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.03f, customer.transform.localPosition.y);
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.01f, customer.transform.localPosition.y);
             yield return null;
         }
 
@@ -126,7 +126,7 @@ public class BottleGame : MonoBehaviour
         customer.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         while (customer.transform.localPosition.x > RightPosition.localPosition.x)
         {
-            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x - 0.03f, customer.transform.localPosition.y);
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x - 0.01f, customer.transform.localPosition.y);
             yield return null;
         }
 
@@ -162,7 +162,7 @@ public class BottleGame : MonoBehaviour
     {
         while (customer.transform.localPosition.x > LeftSpawn.localPosition.x)
         {
-            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x - 0.03f, customer.transform.localPosition.y);
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x - 0.02f, customer.transform.localPosition.y);
             yield return null;
         }
         Destroy(customer);
@@ -172,7 +172,7 @@ public class BottleGame : MonoBehaviour
     {
         while (customer.transform.localPosition.x < RightSpawn.localPosition.x)
         {
-            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.03f, customer.transform.localPosition.y);
+            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.02f, customer.transform.localPosition.y);
             yield return null;
         }
         Destroy(customer);
