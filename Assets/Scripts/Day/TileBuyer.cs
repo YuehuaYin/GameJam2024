@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TileBuyer : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class TileBuyer : MonoBehaviour
     public Tile rightWall;
     public Tile unbuilt;
     public AudioSource audio;
+
+    [SerializeField] TextMeshProUGUI buyNextText;
 
 
     //public int money = GameManager.money;
@@ -200,7 +203,7 @@ public class TileBuyer : MonoBehaviour
         break;
 
         GameManager.tilesOwned = 0;
-        
+        buyNextText.text = "Buy next level\nCost: " + getLevelCost();
         }
         
     }
