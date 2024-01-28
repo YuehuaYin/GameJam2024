@@ -320,6 +320,12 @@ MonoBehaviour:
   LeftPosition: {fileID: 924609212}
   RightSpawn: {fileID: 1196531801}
   RightPosition: {fileID: 621232763}
+  backgroundBasement: {fileID: 21300000, guid: e1f42e7b63c486947b19b6697d751294, type: 3}
+  backgroundClub: {fileID: 21300000, guid: 23acd95fbdea5ae4786bde1fc7ea1bbf, type: 3}
+  backgroundArena: {fileID: 21300000, guid: fa370b960e971ac49afcca511cc2e177, type: 3}
+  backgroundSpace: {fileID: 21300000, guid: 6b058b3517659df40b8a3d3cb66a44a4, type: 3}
+  backgroundDeep: {fileID: 21300000, guid: 1a05afbfb4a3a1445b0f3c2cc821db74, type: 3}
+  backgroundRenderer: {fileID: 1578343226}
 --- !u!1 &280094514
 GameObject:
   m_ObjectHideFlags: 0

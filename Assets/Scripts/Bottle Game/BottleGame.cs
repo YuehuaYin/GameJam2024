@@ -25,6 +25,14 @@ public class BottleGame : MonoBehaviour
     [SerializeField] private Transform RightSpawn;
     [SerializeField] private Transform RightPosition;
 
+    [SerializeField] private Sprite backgroundBasement;
+    [SerializeField] private Sprite backgroundClub;
+    [SerializeField] private Sprite backgroundArena;
+    [SerializeField] private Sprite backgroundSpace;
+    [SerializeField] private Sprite backgroundDeep;
+
+    [SerializeField] private SpriteRenderer backgroundRenderer;
+
     private int bottleNum = 3;
     private Random random = new Random();
 
@@ -39,11 +47,13 @@ public class BottleGame : MonoBehaviour
             blueBottle.SetActive(false);
             yellowBottle.SetActive(false);
             bottleNum = 1;
+            backgroundRenderer.sprite = backgroundClub;
         }
         else if (GameManager.level == 3)
         {
             yellowBottle.SetActive(false);
             bottleNum = 2;
+            backgroundRenderer.sprite = backgroundArena;
         }
         else if(GameManager.level == 4)
         {
@@ -51,6 +61,15 @@ public class BottleGame : MonoBehaviour
             greenBottle.GetComponent<BottleManager>().gravity = 0.2f;
             blueBottle.GetComponent<BottleManager>().gravity = 0.2f;
             bottleNum = 2;
+            backgroundRenderer.sprite = backgroundSpace;
+        }
+        else if (GameManager.level == 5)
+        {
+            backgroundRenderer.sprite = backgroundDeep;
+        }
+        else
+        {
+            backgroundRenderer.sprite = backgroundBasement;
         }
 
         StartCoroutine(StartCustomer());
