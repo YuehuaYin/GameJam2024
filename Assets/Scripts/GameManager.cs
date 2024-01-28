@@ -8,7 +8,12 @@ public class GameManager : MonoBehaviour
 
     public static int money { get; set;}
 
+    public static int tilesOwned { get; set;}
     public static GameManager instance = instance;
+
+    public static bool toiletUnlocked;
+    public static bool barUnlocked;
+    public static bool bouncerUnlocked;
 
     // Start is called before the first frame update
     void Start()
