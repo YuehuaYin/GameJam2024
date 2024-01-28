@@ -7,7 +7,11 @@ public class ComedyMinigame : MonoBehaviour
 {
 
     List<string> emojibank = new List<string> { "cheese", "devil", "eggplant", "ghost", "nerd", "sadcat", "shark", "skull", "smile", "think" };
+    List<string> hecklebank = new List<string> { "booooooooo!!!", "you suck!", "who is this loser?", "get a real job", "not funny..."};
+
+    public GameObject background;
     public GameObject speechPrefab;
+    public GameObject hecklePrefab;
     public timerBar timerbar;
     public GameObject jokeSelections;
     jokes[] jokeObjects;
@@ -16,12 +20,20 @@ public class ComedyMinigame : MonoBehaviour
     [SerializeField] int jokeLength = 4;
 
     GameObject bubble = null;
-    [SerializeField] bool showingEmojis = false;
-    [SerializeField] int bubbleNum = 0;
-    [SerializeField] float bubbleTimer = 1.0f;
+    GameObject heckle = null;
 
-    [SerializeField] float jokeTimer = 5.0f;
+    [SerializeField] bool showingEmojis = false;
+    [SerializeField] bool breakTime = false;
+
+    [SerializeField] int bubbleNum = 0;
+    [SerializeField] float bubbleTimer = 3.0f;
+
+    [SerializeField] float jokeTimer = 15.0f;
     [SerializeField] float timer;
+
+    [SerializeField] bool heckling = false;
+    [SerializeField] float heckleTimer;
+    [SerializeField] int heckleRate;
 
     [SerializeField] int guessingNum = 0;
 
@@ -30,6 +42,34 @@ public class ComedyMinigame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (GameManager.level)
+        {
+            case 1:
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background basement");
+                heckleRate = 0;
+                break;
+            case 2:
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background comedy club");
+                heckleRate = 1;
+                break;
+            case 3:
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background arena");
+                heckleRate = 2;
+                break;
+            case 4:
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background space");
+                heckleRate = 3;
+                break;
+            case 5:
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background cthulu");
+                heckleRate = 4;
+                break;
+            case 6:
+                background.GetComponent<Image>().sprite = Resources.Load<Sprite>("Stand-up background basement");
+                heckleRate = 5;
+                break;
+        }
+
         jokeObjects = jokeSelections.GetComponentsInChildren<jokes>();
         generateJoke();
     }
@@ -54,6 +94,7 @@ public class ComedyMinigame : MonoBehaviour
                     showingEmojis = false;
                     jokeSelections.SetActive(true);
                     setJokeSelections();
+                    timer = 0;
                 }
             }
             else
@@ -61,6 +102,34 @@ public class ComedyMinigame : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
+
+        else if (breakTime)
+        {
+            if (timer > bubbleTimer)
+            {
+                if (bubble != null)
+                {
+                    Destroy(bubble);
+                }
+
+                if (bubbleNum < jokeLength)
+                {
+                    speechBubble(joke[bubbleNum]);
+                }
+                else
+                {
+                    showingEmojis = false;
+                    jokeSelections.SetActive(true);
+                    setJokeSelections();
+                    timer = 0;
+                }
+            }
+            else
+            {
+                timer += Time.deltaTime;
+            }
+        }
+
         else
         {
             if (timer > jokeTimer)
@@ -72,6 +141,32 @@ public class ComedyMinigame : MonoBehaviour
                 timer += Time.deltaTime;
                 timerbar.updateTimerBar(timer, jokeTimer);
 
+            }
+        }
+
+        if (heckling)
+        {
+            if (heckleTimer > 1.5f)
+            {
+                if (heckle != null)
+                {
+                    Destroy(heckle);
+                }
+
+                heckleTimer = 0;
+                heckling = false;
+
+            }
+            else
+            {
+                heckleTimer += Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (rand.Next(1000) < heckleRate)
+            {
+                spawnHeckle();
             }
         }
     }
@@ -98,12 +193,22 @@ public class ComedyMinigame : MonoBehaviour
 
     void speechBubble(string emojiName)
     {
-        float randX = (float) NextDouble(-2, 2);
-        float randY = (float) NextDouble(-1.8, -0.9);
+        float randX = (float) NextDouble(-8.0, -0.9);
+        float randY = (float) NextDouble(0.75, 1.6);
         bubble = Instantiate(speechPrefab, new Vector2(randX, randY), Quaternion.identity);
         bubble.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(emojiName);
         bubbleNum++;
         timer = 0;
+    }
+
+    void spawnHeckle()
+    {
+        float randX = (float)NextDouble(-7.5, -1.2);
+        float randY = (float)NextDouble(0.75, 1.6);
+        heckle = Instantiate(hecklePrefab, new Vector2(randX, randY), Quaternion.identity);
+        heckle.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshPro>().text = hecklebank[rand.Next(hecklebank.Count)];
+        heckleTimer = 0;
+        heckling = true;
     }
 
     void setJokeSelections()
