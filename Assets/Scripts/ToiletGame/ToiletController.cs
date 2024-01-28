@@ -60,7 +60,7 @@ public class ToiletController : MonoBehaviour
             timer = 0;
             if (bucketState == 0)
             {
-                GameManager.winGame();
+                manager.winGame();
                 bucketState = 3;
                 bucket.GetComponent<Bucket>().resetBucket();
                 sponge.GetComponent<Sponge>().resetCleaning();
@@ -68,7 +68,7 @@ public class ToiletController : MonoBehaviour
             }
             else
             {
-                GameManager.loseGame();
+                manager.loseGame();
                 Debug.Log("lose cleaning");
             }
         }

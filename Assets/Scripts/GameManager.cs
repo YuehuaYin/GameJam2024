@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
     public static void loseGame()
     {
-
+        money -= 5;
     }
     public static void newStage()
     {

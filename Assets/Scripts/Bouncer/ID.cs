@@ -6,6 +6,7 @@ using TMPro;
 
 public class ID : MonoBehaviour
 {
+    [SerializeField] private minigameManager manager;
     [SerializeField] public string name;
     [SerializeField] public string age;
     [SerializeField] public string nationality;
@@ -23,7 +24,7 @@ public class ID : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        manager = GameObject.Find("manager").GetComponent<minigameManager>();
     }
 
     // Update is called once per frame
@@ -45,11 +46,11 @@ public class ID : MonoBehaviour
             Debug.Log("Correct!");
             correct.Play();
             AudioSource.PlayClipAtPoint(correct.clip, Vector3.zero);
-            GameManager.winGame();
+            manager.winGame();
         } else {
             Debug.Log("Incorrect!");
             AudioSource.PlayClipAtPoint(incorrect.clip, Vector3.zero);
-            GameManager.loseGame();
+            manager.loseGame();
         }
         Destroy(gameObject);
     }
@@ -58,12 +59,12 @@ public class ID : MonoBehaviour
     public void Deny() {
         if (acceptable) {
             Debug.Log("Incorrect!");
-                 AudioSource.PlayClipAtPoint(incorrect.clip, Vector3.zero);
-            GameManager.money += BouncerController.moneyDenyIncorrect;
+            AudioSource.PlayClipAtPoint(incorrect.clip, Vector3.zero);
+            manager.winGame();
         } else {
             Debug.Log("Correct!");
             AudioSource.PlayClipAtPoint(correct.clip, Vector3.zero);
-            GameManager.money += BouncerController.moneyDenyCorrect;
+            manager.loseGame();
         }
         Destroy(gameObject);
     }

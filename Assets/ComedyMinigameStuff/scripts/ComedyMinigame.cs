@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ComedyMinigame : MonoBehaviour
 {
-
+    [SerializeField] private minigameManager manager;
     List<string> emojibank = new List<string> { "cheese", "devil", "eggplant", "ghost", "nerd", "sadcat", "shark", "skull", "smile", "think" };
     List<string> hecklebank = new List<string> { "booooooooo!!!", "you suck!", "who is this loser?", "get a real job", "not funny.."};
 
@@ -50,6 +50,7 @@ public class ComedyMinigame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.Find("manager").GetComponent<minigameManager>();
         switch (GameManager.level)
         {
             case 1:
@@ -249,7 +250,7 @@ public class ComedyMinigame : MonoBehaviour
         {
             if (guessingNum < jokeLength-1)
             {
-                GameManager.winGame();
+                manager.winGame();
                 successSound.GetComponent<AudioSource>().Play();
             }
             else
@@ -287,7 +288,7 @@ public class ComedyMinigame : MonoBehaviour
         Debug.Log("Failed");
         failSound.GetComponent<AudioSource>().Play();
         resetstuff();
-        GameManager.loseGame();
+        manager.loseGame();
         breakTime = true;
     }
 }
