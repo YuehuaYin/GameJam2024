@@ -453,8 +453,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Mum's Basement
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
-  m_sharedMaterial: {fileID: 2509961000076051989, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
+  m_sharedMaterial: {fileID: -1477069402686405174, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -655,8 +655,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Money: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
-  m_sharedMaterial: {fileID: 2509961000076051989, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
+  m_sharedMaterial: {fileID: -1477069402686405174, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -789,8 +789,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Tile Price: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
-  m_sharedMaterial: {fileID: 2509961000076051989, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
+  m_sharedMaterial: {fileID: -1477069402686405174, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -923,8 +923,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Day: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
-  m_sharedMaterial: {fileID: 2509961000076051989, guid: 8c6654473e2d021499ad8c9c1bad71dc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
+  m_sharedMaterial: {fileID: -1477069402686405174, guid: 83a6af7d765c1ac4f8a198b24d1c103a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1025,8 +1025,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 73d5f84395ba47b42bd53a3378ecfb03, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: e21fe0aa645298049825810f0d3b63e8, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   leftWall: {fileID: 11400000, guid: 130880aae9bfbd448bb9fb3ddc92cf7b, type: 2}
   rightWall: {fileID: 11400000, guid: c3976d7bb8602d54d904f207987233c1, type: 2}
   unbuilt: {fileID: 11400000, guid: 81e62f5b9d0557a448489da1f4f09a77, type: 2}
-  money: 0
+  audio: {fileID: 1901665508}
   tm: {fileID: 2099958417}
 --- !u!19719996 &2099958419
 TilemapCollider2D:

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int level { get; private set; } = 4;
+    public static int level { get; private set; } = 1;
 
-    public static int money { get; set;}
+    public static int money { get; set;} = 30;
 
     public static int tilesOwned { get; set;}
     public static GameManager instance = instance;

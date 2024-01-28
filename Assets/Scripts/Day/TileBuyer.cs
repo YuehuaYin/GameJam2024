@@ -14,6 +14,7 @@ public class TileBuyer : MonoBehaviour
     public Tile leftWall;
     public Tile rightWall;
     public Tile unbuilt;
+    public AudioSource audio;
 
     //public int money = GameManager.money;
 
@@ -45,6 +46,8 @@ public class TileBuyer : MonoBehaviour
 
         buildInitialTile(new Vector2Int(0,0));
         buildInitialTile(new Vector2Int(0,-1));
+        isOccupied[(new Vector2Int(0,0))] = true;
+        isOccupied[(new Vector2Int(0,-1))] = true;        
     }
     public void level2Start(){
         buildXY(3,3);
@@ -126,6 +129,7 @@ public class TileBuyer : MonoBehaviour
             tm.SetTile(convVector(pos),tileCoords[pos]);
             isOccupied[(pos)] = true;
             GameManager.tilesOwned = GameManager.tilesOwned + 1;
+            audio.Play();
         }
         }
     }
@@ -164,7 +168,6 @@ public class TileBuyer : MonoBehaviour
         break;
 
         GameManager.tilesOwned = 0;
-        GameManager.money = 10;
         
         }
         
