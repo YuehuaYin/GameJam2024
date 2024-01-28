@@ -77,7 +77,7 @@ public class BottleGame : MonoBehaviour
 
     IEnumerator StartCustomer()
     {
-        while (true) //CHANGE FOR WHEN GAME ENDS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        while (true) //CHANGE FROM TRUE WHEN GAME ENDS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
             (GameObject, GameObject) t = (CustomerGreenLeft, CustomerGreenRight);
             
@@ -155,13 +155,13 @@ public class BottleGame : MonoBehaviour
     public void finishLeft(GameObject customer)
     {
 
-        StartCoroutine(slideOffLeft(customer));
+        StartCoroutine(slideOffLeft(customer)); //ADD POINTS
     }
 
     public void failLeft(GameObject customer)
     {
         
-        StartCoroutine(slideOffLeft(customer));
+        StartCoroutine(slideOffLeft(customer)); //SUBTRACT POINTS??
     }
 
     public void finishRight(GameObject customer)
@@ -174,7 +174,7 @@ public class BottleGame : MonoBehaviour
     public void failRight(GameObject customer)
     {
         
-        StartCoroutine(sliderOffRight(customer));
+        StartCoroutine(sliderOffRight(customer)); 
     }
 
     IEnumerator slideOffLeft(GameObject customer)
