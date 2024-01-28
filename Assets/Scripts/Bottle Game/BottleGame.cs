@@ -7,6 +7,8 @@ using Random = System.Random;
 
 public class BottleGame : MonoBehaviour
 {
+    [SerializeField] private minigameManager manager;
+
     [SerializeField] private GameObject greenBottle;
     [SerializeField] private GameObject blueBottle;
     [SerializeField] private GameObject yellowBottle;
@@ -42,18 +44,30 @@ public class BottleGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.level == 2)
+        manager = GameObject.Find("manager").GetComponent<minigameManager>();
+
+        if (!GameManager.barUnlocked)
+        {
+            manager.disableBar();
+        }
+        else if (GameManager.level == 1)
+        {
+            manager.disableBar();
+        }
+        else if (GameManager.level == 2)
         {
             blueBottle.SetActive(false);
             yellowBottle.SetActive(false);
             bottleNum = 1;
             backgroundRenderer.sprite = backgroundClub;
+            StartCoroutine(StartCustomer());
         }
         else if (GameManager.level == 3)
         {
             yellowBottle.SetActive(false);
             bottleNum = 2;
             backgroundRenderer.sprite = backgroundArena;
+            StartCoroutine(StartCustomer());
         }
         else if(GameManager.level == 4)
         {
@@ -62,17 +76,18 @@ public class BottleGame : MonoBehaviour
             blueBottle.GetComponent<BottleManager>().gravity = 0.2f;
             bottleNum = 2;
             backgroundRenderer.sprite = backgroundSpace;
+            StartCoroutine(StartCustomer());
         }
         else if (GameManager.level == 5)
         {
             backgroundRenderer.sprite = backgroundDeep;
+            StartCoroutine(StartCustomer());
         }
         else
         {
             backgroundRenderer.sprite = backgroundBasement;
+            StartCoroutine(StartCustomer());
         }
-
-        StartCoroutine(StartCustomer());
     }
 
     IEnumerator StartCustomer()

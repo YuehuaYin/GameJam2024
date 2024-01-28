@@ -6,6 +6,8 @@ using TMPro;
 
 public class BouncerController : MonoBehaviour
 {
+    [SerializeField] private minigameManager manager;
+
     [SerializeField] GameObject idPrefab;
     [SerializeField] TMP_Text money;
     [SerializeField] TMP_Text rules;
@@ -26,6 +28,8 @@ public class BouncerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.Find("manager").GetComponent<minigameManager>();
+
         // setupLevel1();
         // setupLevel2();
         setupLevel3();
@@ -43,27 +47,37 @@ public class BouncerController : MonoBehaviour
     void FixedUpdate() {
         currentTime += Time.deltaTime;
 
-        switch(GameManager.level) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                rules.SetText("No under 18s.\nNo Frenchmen");
-                tickLevel(level3);
-                break;
-            case 4:
-                rules.SetText("No Humans under 18\nNo Space-Elves over 197\nNo Daleks. End of.");
-                tickLevel(level4);
-                break;
-            case 5:
-                rules.SetText("No square-number ages\nNo Greek gods except Hades");
-                tickLevel(level5);
-                break;
-            case 6:
-                rules.SetText("No even-lettered names\n");
-                tickLevel(level6);
-                break;
+        if (GameManager.bouncerUnlocked)
+        {
+            switch (GameManager.level)
+            {
+                case 1:
+                    manager.disableBouncer();
+                    break;
+                case 2:
+                    manager.disableBouncer();
+                    break;
+                case 3:
+                    rules.SetText("No under 18s.\nNo Frenchmen");
+                    tickLevel(level3);
+                    break;
+                case 4:
+                    rules.SetText("No Humans under 18\nNo Space-Elves over 197\nNo Daleks. End of.");
+                    tickLevel(level4);
+                    break;
+                case 5:
+                    rules.SetText("No square-number ages\nNo Greek gods except Hades");
+                    tickLevel(level5);
+                    break;
+                case 6:
+                    rules.SetText("No even-lettered names\n");
+                    tickLevel(level6);
+                    break;
+            }
+        }
+        else
+        {
+            manager.disableBouncer();
         }
     }
 

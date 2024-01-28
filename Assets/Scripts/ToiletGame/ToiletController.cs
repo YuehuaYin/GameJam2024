@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ToiletController : MonoBehaviour
 {
+    [SerializeField] private minigameManager manager;
+
     [SerializeField] GameObject bucket;
     [SerializeField] GameObject sponge;
 
@@ -33,10 +35,20 @@ public class ToiletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        changeSprite(dirtyFull);
-        bucketState = 3;
-        setLevelStats();
-        setuplevel();
+        manager = GameObject.Find("manager").GetComponent<minigameManager>();
+
+        if (GameManager.toiletUnlocked)
+        {
+            changeSprite(dirtyFull);
+            bucketState = 3;
+            setLevelStats();
+            setuplevel();
+        }
+        else
+        {
+            manager.disableToilet();
+        }
+
     }
 
     // Update is called once per frame

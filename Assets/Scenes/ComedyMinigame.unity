@@ -1692,6 +1692,7 @@ Transform:
   - {fileID: 2101869084}
   - {fileID: 1480184134}
   - {fileID: 473731185}
+  - {fileID: 1847834087}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442588069
@@ -1956,16 +1957,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847834086}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1320288, y: 2.4160497, z: 4.8147745}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.26006043, y: -0.016790057, z: 4.8147745}
+  m_LocalScale: {x: 0.1125427, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 254012837}
   - {fileID: 1804552806}
   - {fileID: 844219666}
   - {fileID: 1348325491}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1368993002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2033063444
 GameObject:
@@ -1998,7 +1999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1442588069}
   speechPrefab: {fileID: 2711799928151467644, guid: efcbcb5591e0edb4fbaa13fbb766eb6c, type: 3}
-  hecklePrefab: {fileID: 2711799928151467644, guid: 52aca591cc690694a865fcfa1639e7fe, type: 3}
+  hecklePrefab: {fileID: 2711799928151467644, guid: fda7cd23425e72341931233d216f8147, type: 3}
   timerbar: {fileID: 140807544}
   jokeSelections: {fileID: 1480184133}
   successSound: {fileID: 254012836}
@@ -2106,4 +2107,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 651606692}
   - {fileID: 1368993002}
-  - {fileID: 1847834087}
