@@ -1610,14 +1610,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: {fileID: 11400000, guid: df88682e89c6db8458d7ac9610b8a1e3, type: 2}
-  entrance: {fileID: 11400000, guid: 6abdf169f2a5c6b47aee21a4abcdacc4, type: 2}
+  entrance: {fileID: 11400000, guid: 073265de06a29224b85f709b69fa220b, type: 2}
   bar: {fileID: 11400000, guid: 6abdf169f2a5c6b47aee21a4abcdacc4, type: 2}
   toilets: {fileID: 11400000, guid: 6abdf169f2a5c6b47aee21a4abcdacc4, type: 2}
-  empty: {fileID: 11400000, guid: aaee3977137168f46a95dbd3d21d5a9e, type: 2}
+  empty: {fileID: 11400000, guid: c81c7bf4337ed62479b170741c66f4c5, type: 2}
   corner: {fileID: 11400000, guid: df88682e89c6db8458d7ac9610b8a1e3, type: 2}
-  leftWall: {fileID: 11400000, guid: 130880aae9bfbd448bb9fb3ddc92cf7b, type: 2}
-  rightWall: {fileID: 11400000, guid: c3976d7bb8602d54d904f207987233c1, type: 2}
-  unbuilt: {fileID: 11400000, guid: 81e62f5b9d0557a448489da1f4f09a77, type: 2}
+  leftWall: {fileID: 11400000, guid: b6a2af58cd95c2140b351879ae60a264, type: 2}
+  rightWall: {fileID: 11400000, guid: 34c08a553d49d3c459f3d988129cadc6, type: 2}
+  unbuilt: {fileID: 11400000, guid: 148435c6acadee34095d0de760608f11, type: 2}
   audio: {fileID: 1901665508}
   tm: {fileID: 2099958417}
 --- !u!19719996 &2099958419
