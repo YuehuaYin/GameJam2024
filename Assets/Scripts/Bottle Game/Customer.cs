@@ -9,8 +9,18 @@ public class Customer : MonoBehaviour
     private MeshFilter meshFilter;
     private Mesh mesh;
 
+    protected GameObject bottleGame;
+
+    [SerializeField]
+    private CustomerTimer timer;
+
     public int targetLiquid = 30;
     public int currectLiquid;
+    
+    public float time;
+    public float maxtime = 20;
+
+    private bool start;
     
     void Start()
     {
@@ -44,9 +54,19 @@ public class Customer : MonoBehaviour
 
         meshFilter.mesh = mesh;
 
+        bottleGame = GameObject.Find("BottleGame Quadrent");
     }
 
-    private void addLiquid()
+    private void FixedUpdate()
+    {
+        if (time < maxtime)
+        {
+            time += Time.deltaTime;
+            timer.updateTimer(time, maxtime);
+        }
+    }
+
+    protected void addLiquid()
     {
         float x = ((float) currectLiquid / targetLiquid) * (0.45f - 0.283f);
         float y = ((float) currectLiquid / targetLiquid) *(0.26f + 0.49f);
@@ -76,4 +96,9 @@ public class Customer : MonoBehaviour
         Debug.Log(other.name);
     }
 
+    IEnumerable angry()
+    {
+        return null;
+    }
+    
 }

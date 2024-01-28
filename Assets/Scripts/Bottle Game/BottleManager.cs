@@ -39,7 +39,7 @@ public class BottleManager : MonoBehaviour
         }
         
         
-        if (transform.localPosition.x < -0.48 || transform.localPosition.x > 0.928 || transform.localPosition.y < -0.484)
+        if (transform.localPosition.x < -0.875 || transform.localPosition.x > 0.966 || transform.localPosition.y < -0.45)
         {
             transform.localPosition = returnPosition;
             transform.rotation = Quaternion.identity;

@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8088836657397153015}
   m_Layer: 8
-  m_Name: CustomerGreen
+  m_Name: CustomerBlueRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -868,10 +868,10 @@ GameObject:
   - component: {fileID: 2081445593633961824}
   - component: {fileID: 3988700075737659801}
   - component: {fileID: 4482533110119270935}
-  - component: {fileID: 6228638887577468928}
-  - component: {fileID: 7887625928259065367}
+  - component: {fileID: 8898530177242010056}
+  - component: {fileID: 5242344388856132272}
   m_Layer: 8
-  m_Name: 1
+  m_Name: 2
   m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,23 +942,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9023734863281850077}
   m_Mesh: {fileID: 0}
---- !u!114 &6228638887577468928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9023734863281850077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e285b8479db2745a5b00d734b0e919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshFilter: {fileID: 4482533110119270935}
-  targetLiquid: 30
-  currectLiquid: 0
---- !u!61 &7887625928259065367
-BoxCollider2D:
+--- !u!60 &8898530177242010056
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -986,10 +971,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.475}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -999,9 +984,29 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.58, y: 0.04}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.29, y: -0.46}
+      - {x: -0.29, y: -0.46}
+      - {x: -0.283, y: -0.49}
+      - {x: 0.283, y: -0.49}
+  m_UseDelaunayMesh: 0
+--- !u!114 &5242344388856132272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9023734863281850077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980b42a77a814ad6b73f5987248740e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshFilter: {fileID: 4482533110119270935}
+  targetLiquid: 30
+  currectLiquid: 0
+  time: 20
 --- !u!1 &9222258308886670277
 GameObject:
   m_ObjectHideFlags: 0
