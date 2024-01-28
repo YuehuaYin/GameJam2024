@@ -25,30 +25,67 @@ public class Bucket : MonoBehaviour
 
     private ParticleSystem.EmissionModule pissEmission;
     private ParticleSystem.EmissionModule shitEmission;
+    private ParticleSystem.EmissionModule cumEmission;
     //first fame
+    [SerializeField] Vector3 pointA;
+    [SerializeField] Vector3 pointB;
+    [SerializeField] Vector3 pointC;
     public void Start()
     {
-        originalPos = GetComponent<Transform>().position;
-        piss.enableEmission = false;
-        shit.enableEmission = false;
+        originalPos = GetComponent<Transform>().localPosition;
+        pissEmission.enabled = false;
+        shitEmission.enabled = false;
+        cumEmission.enabled = false;
         gameTime = 0;
         pissEmission = piss.emission;
         shitEmission = shit.emission;
         peeArrivalSound.Play();
+        aimedPoint = originalPos;
     }
     public void resetBucket()
     {
-        piss.enableEmission = false;
-        shit.enableEmission = false;
+        pissEmission.enabled = false;
+        shitEmission.enabled = false;
+        cumEmission.enabled = false;
         full = true;
         timeSpentEmptying = 0;
         emptying = false;
         emptyBucketSound.Stop();
         peeArrivalSound.Play();
     }
+    private Vector3 aimedPoint;
+    public void choosePoint()
+    {
+        int i = Mathf.RoundToInt(Random.Range(1, 4));
+        switch (i)
+        {
+            case 1:
+                aimedPoint = pointA;
+                break;
+            case 2:
+                aimedPoint = pointB;
+                break;
+            case 3:
+                aimedPoint = pointC;
+                break;
+            case 4:
+                aimedPoint = originalPos;
+                break;
+        }
+    }
     private void Update()
     {
-        gameTime += Time.deltaTime;
+        if (GameManager.level > 3)
+        {
+            if (!emptying && aimedPoint == transform.localPosition)
+            {
+                choosePoint();
+            }
+            else
+            {
+                transform.localPosition = Vector3.MoveTowards(transform.localPosition, aimedPoint, 0.0005f * (GameManager.level - 3));
+            }
+        }
         if (emptying)
         {
             timeSpentEmptying += Time.deltaTime;
@@ -115,7 +152,7 @@ public class Bucket : MonoBehaviour
 
     private void OnMouseUp()
     {
-        GetComponent<Transform>().position = new Vector3(originalPos.x, originalPos.y, 0);
+        GetComponent<Transform>().localPosition = new Vector3(originalPos.x, originalPos.y, 0);
     }
     private void EnterDrain()
     {
