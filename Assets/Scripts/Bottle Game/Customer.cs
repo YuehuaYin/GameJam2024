@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,43 +44,36 @@ public class Customer : MonoBehaviour
 
         meshFilter.mesh = mesh;
 
-        StartCoroutine(Test());
     }
 
     private void addLiquid()
     {
-        float x = (currectLiquid / targetLiquid) * (0.45f - 0.283f);
-        float y = (currectLiquid / targetLiquid) *(0.26f + 0.49f);
+        float x = ((float) currectLiquid / targetLiquid) * (0.45f - 0.283f);
+        float y = ((float) currectLiquid / targetLiquid) *(0.26f + 0.49f);
 
         Vector3[] vertices = new Vector3[4];
         
         vertices[0] = new Vector3(-0.283f, -0.49f);
-        vertices[1] = new Vector3(-x, y);
-        vertices[2] = new Vector3(x, y);
+        vertices[1] = new Vector3(-x - 0.283f, y - 0.49f);
+        vertices[2] = new Vector3(x + 0.283f, y - 0.49f);
         vertices[3] = new Vector3(0.283f, -0.49f);
 
         mesh.vertices = vertices;
         
         meshFilter.mesh = mesh;
-        
-        Debug.Log(x + "," + y);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void fill()
     {
-        
-    }
-
-    IEnumerator Test()
-    {
-        while (currectLiquid < targetLiquid)
+        if (currectLiquid < targetLiquid)
         {
             currectLiquid++;
             addLiquid();
-            Debug.Log(currectLiquid);
-
-            yield return null;
         }
     }
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log(other.name);
+    }
+
 }

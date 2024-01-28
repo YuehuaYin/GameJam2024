@@ -10,7 +10,7 @@ public class Bucket : MonoBehaviour
     private Vector2 difference = Vector2.zero;
     private Vector2 originalPos;
     private bool emptying;
-    [SerializeField] private float timeToEmpty;
+    [SerializeField] public float timeToEmpty;
     [SerializeField] private float timeSpentEmptying;
     [SerializeField] private bool full = true;
     [SerializeField] private float timelimit;
