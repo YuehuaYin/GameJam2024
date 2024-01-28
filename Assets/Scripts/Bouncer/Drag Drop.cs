@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DragDrop : MonoBehaviour
 {
-    private Vector2 difference = Vector2.zero;
-
     [SerializeField] private GameObject go;
 
     private Transform tf;
@@ -17,6 +15,12 @@ public class DragDrop : MonoBehaviour
     [SerializeField] private float mouseUpDrag;
 
     [SerializeField] private float mouseDownDrag;
+
+    [SerializeField] private float pickupScaleMult;
+
+    private Vector2 difference = Vector2.zero;
+
+    private Vector3 baseScale;
     
     public void Awake() {
         rb = go.GetComponent<Rigidbody2D>();
@@ -26,7 +30,7 @@ public class DragDrop : MonoBehaviour
     //first frame
     public void Start()
     {
-        
+        baseScale = transform.localScale;
     }
 
     private void Update()
@@ -41,8 +45,11 @@ public class DragDrop : MonoBehaviour
             rb.drag = mouseDownDrag;
             transform.rotation = Quaternion.identity;
             rb.angularVelocity = 0;
+
+            transform.localScale = pickupScaleMult * baseScale;
         } else {
             rb.drag = mouseUpDrag;
+            transform.localScale = baseScale;
         }
     }
 
