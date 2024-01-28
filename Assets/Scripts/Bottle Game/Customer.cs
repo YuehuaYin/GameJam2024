@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using Random = System.Random;
 
 public abstract class Customer : MonoBehaviour
 {
@@ -23,9 +24,16 @@ public abstract class Customer : MonoBehaviour
 
     public bool start;
 
+    private Random random = new Random();
+
     [SerializeField]
     protected GameObject bigDaddyWholeThing;
-    
+
+    [SerializeField] private AudioClip arrive;
+    [SerializeField] protected AudioClip fill1;
+    [SerializeField] protected AudioClip fill2;
+    [SerializeField] private AudioSource audioSource;
+
     void Start()
     {
         mesh = new Mesh();
@@ -92,6 +100,8 @@ public abstract class Customer : MonoBehaviour
         mesh.vertices = vertices;
         
         meshFilter.mesh = mesh;
+        
+        PlayFill();
     }
 
     public virtual void Fill()
@@ -109,5 +119,37 @@ public abstract class Customer : MonoBehaviour
 
     protected virtual void fail()
     {
+    }
+
+    private void PlayFill()
+    {
+        if (!audioSource.isPlaying)
+        {
+            if (random.NextDouble() > 0.5)
+            {
+                audioSource.clip = fill1;
+            }
+            else
+            {
+                audioSource.clip = fill2;
+            }
+
+            audioSource.pitch = (float) (0.95 + (random.NextDouble() * 0.1));
+            audioSource.Play();
+        }
+    }
+
+    private void PourMeADrinkBartender()
+    {
+        audioSource.clip = arrive;
+        
+        audioSource.pitch = (float) (0.95 + (random.NextDouble() * 0.1));
+        audioSource.Play();
+    }
+
+    public void begin()
+    {
+        start = true;
+        PourMeADrinkBartender();
     }
 }

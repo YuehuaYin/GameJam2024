@@ -152,7 +152,7 @@ public class BottleGame : MonoBehaviour
             yield return null;
         }
 
-        customer.GetComponentInChildren<Customer>().start = true;
+        customer.GetComponentInChildren<Customer>().begin();
     }
 
     IEnumerator startRight(GameObject customer)
@@ -164,7 +164,7 @@ public class BottleGame : MonoBehaviour
             yield return null;
         }
 
-        customer.GetComponentInChildren<Customer>().start = true;
+        customer.GetComponentInChildren<Customer>().begin();
     }
 
     public void finishLeft(GameObject customer)
@@ -204,11 +204,13 @@ public class BottleGame : MonoBehaviour
 
     IEnumerator sliderOffRight(GameObject customer)
     {
-        while (customer.transform.localPosition.x < RightSpawn.localPosition.x)
-        {
-            customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.02f, customer.transform.localPosition.y);
-            yield return null;
-        }
-        Destroy(customer);
+            while (customer.transform.localPosition.x < RightSpawn.localPosition.x)
+            {
+                customer.transform.localPosition = new Vector3(customer.transform.localPosition.x + 0.02f,
+                    customer.transform.localPosition.y);
+                yield return null;
+            }
+
+            Destroy(customer);
     }
 }

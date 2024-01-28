@@ -16,6 +16,11 @@ public class BottleManager : MonoBehaviour
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private Vector3 returnPosition;
 
+    [SerializeField] private AudioClip woosh1;
+    [SerializeField] private AudioClip woosh2;
+    [SerializeField] private AudioSource audioSource;
+
+
     public float speed = 20f;
 
     public float gravity = 0.5f;
@@ -85,8 +90,28 @@ public class BottleManager : MonoBehaviour
                 rigidBody.angularVelocity = -(float) (random.NextDouble() * 30 + 100);
             }
 
+            PlayWoosh();
+            
             holdMeDaddy = false;
             difference = new Vector2(0, 0);
+        }
+    }
+
+    private void PlayWoosh()
+    {
+        if (!audioSource.isPlaying)
+        {
+            if (random.NextDouble() > 0.5)
+            {
+                audioSource.clip = woosh1;
+            }
+            else
+            {
+                audioSource.clip = woosh2;
+            }
+
+            audioSource.pitch = (float) (0.95 + (random.NextDouble() * 0.1));
+            audioSource.Play();
         }
     }
 }
