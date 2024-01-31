@@ -29,6 +29,7 @@ public class TileBuyer : MonoBehaviour
     private Dictionary<Vector2Int, Tile> tileCoords;
 
     private Dictionary<Vector2Int, bool> isOccupied = new Dictionary<Vector2Int, bool>();
+    private Dictionary<Vector2Int, bool> savedTiles = new Dictionary<Vector2Int, bool>();
 
     private int getLevelCost() {
         return Mathf.RoundToInt((Mathf.Pow(1.5f,GameManager.level) * 100));
@@ -174,6 +175,24 @@ public class TileBuyer : MonoBehaviour
         }
         }
     }
+    private void badFunctionThatMightNotWorkToSaveTilesOnNewDay()
+    {
+        //ok this is a really messed up funtion
+        //Get all the positions that were saved
+        List<Vector2Int> positions = new List<Vector2Int>(savedTiles.Keys);
+        //loop through them all
+        foreach (Vector2Int pos in positions)
+        {
+            // if they were occupied before buy them again
+            if (savedTiles[pos] == true)
+            {
+                buyTile(pos);
+                //refund the player the money it would have cost?
+                GameManager.money = GameManager.money + getPrice();
+                //could alternatively save the money before and reset it herre?
+            }
+        }
+    }
 
 
     private Vector3Int convVector(Vector2Int vector) {
@@ -186,6 +205,7 @@ public class TileBuyer : MonoBehaviour
         tileCoords = new Dictionary<Vector2Int,Tile> {};
         int i = GameManager.level;
         
+
         switch (i){
         case 1:
         level1Start();
@@ -205,10 +225,10 @@ public class TileBuyer : MonoBehaviour
         case 6:
         level6Start();
         break;
-
-        GameManager.tilesOwned = 0;
+        //Removed a line that set tiles owned to 0 here, shouldn't need it since we set to 0 start of each stage
         }
-        
+        savedTiles = GameManager.savedTiles;
+        badFunctionThatMightNotWorkToSaveTilesOnNewDay();
     }
 
     // Update is called once per frame
@@ -223,5 +243,10 @@ public class TileBuyer : MonoBehaviour
         
         //Once we have money set up, change this to: buyTile(gridPos) 
         buildTile(gridPos);
+    }
+    public void loadNight()
+    {
+        GameManager.savedTiles = isOccupied;
+        SceneManager.LoadScene("TestSystem");
     }
 }

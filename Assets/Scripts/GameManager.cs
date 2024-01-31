@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static bool toiletUnlocked = false;
     public static bool barUnlocked = false;
     public static bool bouncerUnlocked = false;
-
+    public static Dictionary<Vector2Int, bool> savedTiles = new Dictionary<Vector2Int, bool>();
     public static void winGame()
     {
         money = money + Mathf.RoundToInt(15 * (1 + level * 0.2f) * (1 + tilesOwned * 0.1f));
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         bouncerUnlocked = false;
         tilesOwned = 0;
         level = level +=1;
+        savedTiles = new Dictionary<Vector2Int, bool>();
     }
     // Start is called before the first frame update
     void Start()
